@@ -4,6 +4,7 @@
 data/polls.csv   pesquisas curadas (fonte de verdade editável)
 data/tse.csv     arquivo de registros do TSE (você baixa; ver abaixo)
 ingest.py        valida, deduplica, confirma no TSE, grava SQLite e exporta JSON
+collect.py       coleta automática a cada 2 h (fontes em data/sources.csv)
 site/index.html  painel (lê polls.json)
 site/polls.json  gerado pelo ingest.py
 ```
@@ -36,21 +37,25 @@ Cada item extraído passa pela mesma validação do CSV curado antes de ir para 
 python3 -m unittest discover -s tests
 ```
 
-Cobrem retries, fallback, timeout, erros não retentáveis, `retry-after`, validação e a sincronização do banco com o CSV.
+Cobrem retries, fallback, timeout, erros não retentáveis, `retry-after`, validação, a sincronização do banco com o CSV e, na coleta automática, `robots.txt`, leitura de feeds, travas de publicação e a marcação `origem=auto`.
 
 ## Papel do SQLite
 
 O CSV é a fonte de verdade: o banco só guarda o que foi confirmado e completado pelo registro do TSE entre execuções, e linhas apagadas ou corrigidas no CSV saem do banco e do JSON. Para guardar histórico de versões, use controle de versão no `polls.csv`.
 
-## Atualização periódica
+## Atualização automática (a cada 2 h)
 
-Cron, a cada 30 minutos:
+`.github/workflows/atualizar.yml` roda a cada 2 horas no GitHub Actions:
 
-```
-*/30 * * * * cd /srv/agregador && python3 ingest.py --tse data/tse.csv && cp site/polls.json /var/www/agregador/
-```
+1. `collect.py` lê os feeds marcados com `ativo=sim` em `data/sources.csv`, ignora o que já está em `data/seen.json`, busca a página e os PDFs do instituto quando o feed só traz resumo e manda o texto à API da Anthropic (via `call_llm()`).
+2. Cada pesquisa extraída passa pela validação do CSV e pelas travas de publicação: precisa ser nacional, do 2º turno real, ter registro `BR-00000/2026` que ainda não esteja no CSV, Lula + Flávio ≤ 97% (acima disso costuma ser voto válido lido como total) e data dos últimos 30 dias. As que passam entram em `data/polls.csv` com `origem=auto`; as outras vão para `data/staged.csv` com o motivo.
+3. `ingest.py` regenera `site/polls.json`, o workflow faz commit dos dados e publica `site/` no GitHub Pages. Um push no `main` também republica, sem coletar.
 
-Em GitHub Actions, use um workflow com `schedule: cron` que rode `ingest.py`, faça commit de `site/polls.json` e publique `site/` no GitHub Pages.
+O painel busca `polls.json` de novo a cada 5 minutos. Pesquisas automáticas aparecem com a marca *auto*, que leva à fonte.
+
+Para ativar: envie o repositório ao GitHub, crie o segredo `ANTHROPIC_API_KEY` em *Settings → Secrets and variables → Actions* e, em *Settings → Pages*, escolha a origem "GitHub Actions". Para testar a coleta sem gastar API: `python3 collect.py --dry-run`.
+
+As fontes e a conferência de `robots.txt` e termos de uso ficam em `data/sources.csv`. O `collect.py` ainda checa o `robots.txt` a cada rodada, inclusive as regras para `ClaudeBot` e `anthropic-ai`.
 
 ## Limitações
 

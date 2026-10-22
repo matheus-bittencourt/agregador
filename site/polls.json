@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T13:16:30+00:00",
+ "generated_at": "2026-10-22T13:29:34+00:00",
  "election_date": "2026-10-25",
  "polls": [
   {
@@ -13,7 +13,8 @@
    "f": 38.0,
    "k": "sim",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   },
   {
    "d": "2026-06-20",
@@ -26,7 +27,8 @@
    "f": 43.0,
    "k": "sim",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   },
   {
    "d": "2026-07-24",
@@ -39,7 +41,8 @@
    "f": 43.0,
    "k": "sim",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   },
   {
    "d": "2026-10-08",
@@ -52,7 +55,8 @@
    "f": 49.0,
    "k": "real",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   },
   {
    "d": "2026-10-14",
@@ -65,7 +69,8 @@
    "f": 46.0,
    "k": "real",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   },
   {
    "d": "2026-10-15",
@@ -78,7 +83,8 @@
    "f": 47.0,
    "k": "real",
    "s": null,
-   "v": false
+   "v": false,
+   "a": false
   }
  ]
 }

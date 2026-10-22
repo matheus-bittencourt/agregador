@@ -7,6 +7,7 @@ Uso:
   python ingest.py --extract artigos/*.txt  # extrai pesquisas de textos para data/staged.csv (revisão humana)
 """
 import argparse
+import base64
 import csv
 import json
 import os
@@ -76,7 +77,8 @@ def parse_row(r):
     n = num(r.get("n"))
     p = dict(d=d, i=inst, r=reg, n=int(n) if n else None, m=num(r.get("margin")),
              c=(r.get("contratante") or "").strip() or None, l=l, f=f, k=k,
-             s=(r.get("source_url") or "").strip() or None, v=False)
+             s=(r.get("source_url") or "").strip() or None, v=False,
+             a=(r.get("origem") or "").strip() == "auto")  # publicada pelo collect.py sem revisão
     return p, errs
 
 
@@ -124,16 +126,19 @@ def save(polls, db):
     con = sqlite3.connect(db)
     con.execute("""CREATE TABLE IF NOT EXISTS polls(
         key TEXT PRIMARY KEY, d TEXT, i TEXT, r TEXT, n INT, m REAL, c TEXT,
-        l REAL, f REAL, k TEXT, s TEXT, v INT, updated TEXT)""")
+        l REAL, f REAL, k TEXT, s TEXT, v INT, updated TEXT, a INT DEFAULT 0)""")
+    if "a" not in [r[1] for r in con.execute("PRAGMA table_info(polls)")]:  # banco anterior à coleta automática
+        con.execute("ALTER TABLE polls ADD COLUMN a INT DEFAULT 0")
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     for p in polls.values():
-        con.execute("""INSERT INTO polls VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+        con.execute("""INSERT INTO polls(key,d,i,r,n,m,c,l,f,k,s,v,updated,a) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ON CONFLICT(key) DO UPDATE SET d=excluded.d, i=excluded.i, r=excluded.r,
               n=COALESCE(excluded.n, polls.n), m=COALESCE(excluded.m, polls.m),
               c=COALESCE(excluded.c, polls.c), l=excluded.l, f=excluded.f, k=excluded.k,
-              s=COALESCE(excluded.s, polls.s), v=MAX(polls.v, excluded.v), updated=excluded.updated""",
+              s=COALESCE(excluded.s, polls.s), v=MAX(polls.v, excluded.v), updated=excluded.updated,
+              a=excluded.a""",
                     (key(p), p["d"], p["i"], p["r"], p["n"], p["m"], p["c"], p["l"], p["f"],
-                     p["k"], p["s"], int(p["v"]), now))
+                     p["k"], p["s"], int(p["v"]), now, int(p["a"])))
     # O CSV é a fonte de verdade: remove do banco o que foi apagado ou corrigido nele.
     keys = [key(p) for p in polls.values()]
     con.execute(f"DELETE FROM polls WHERE key NOT IN ({','.join('?' * len(keys))})", keys)
@@ -142,11 +147,11 @@ def save(polls, db):
 
 
 def export(con, out):
-    cur = con.execute("SELECT d,i,r,n,m,c,l,f,k,s,v FROM polls ORDER BY d, i")
-    cols = ["d", "i", "r", "n", "m", "c", "l", "f", "k", "s", "v"]
+    cur = con.execute("SELECT d,i,r,n,m,c,l,f,k,s,v,a FROM polls ORDER BY d, i")
+    cols = ["d", "i", "r", "n", "m", "c", "l", "f", "k", "s", "v", "a"]
     polls = [dict(zip(cols, row)) for row in cur]
     for p in polls:
-        p["v"] = bool(p["v"])
+        p["v"], p["a"] = bool(p["v"]), bool(p["a"])
     doc = {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "election_date": ELECTION, "polls": polls}
     Path(out).parent.mkdir(parents=True, exist_ok=True)
@@ -161,10 +166,12 @@ PROMPT = (
     "(Lula x Flávio Bolsonaro). Responda SOMENTE com uma lista JSON de objetos com as chaves: "
     "date (YYYY-MM-DD, divulgação), inst, registro (BR-00000/2026 ou null), n (inteiro ou null), "
     "margin (número ou null), contratante (texto ou null), lula, flavio (percentuais sobre o total "
-    "de entrevistados, nunca votos válidos), scenario (\"real\"). Não invente nada: use null quando "
-    "o dado não estiver no texto. Se houver só votos válidos, devolva lista vazia."
+    "de entrevistados, nunca votos válidos), scenario (\"real\"), nacional (true só se a amostra é "
+    "do eleitorado do Brasil inteiro; false para pesquisas de um estado ou município). Não invente "
+    "nada: use null quando o dado não estiver no texto. Se houver só votos válidos, devolva lista vazia."
 )
 FIELDS = ["date", "inst", "registro", "n", "margin", "contratante", "scenario", "lula", "flavio", "source_url"]
+STAGED_FIELDS = FIELDS + ["motivo"]
 
 
 RETRYABLE = {429, 500, 502, 503, 504, 529}
@@ -222,38 +229,67 @@ def safe_cell(v):
     return "'" + v if isinstance(v, str) and v[:1] in ("=", "+", "-", "@") else v
 
 
-def extract(files, staged):
+def llm_client():
     import anthropic  # pip install anthropic; usa ANTHROPIC_API_KEY
-    client = anthropic.Anthropic(timeout=60.0, max_retries=0)  # retries ficam em call_llm
+    return anthropic.Anthropic(timeout=60.0, max_retries=0)  # retries ficam em call_llm
+
+
+def extract_items(client, text, src, pdfs=()):
+    """Extrai pesquisas de um texto. Devolve só os itens que passam na validação do CSV curado.
+
+    Levanta exceção se o LLM falhar ou não responder JSON, para quem chama decidir se tenta de novo.
+    """
+    prompt = f"{PROMPT}\n\n<texto>\n{text[:20000]}\n</texto>"
+    if pdfs:
+        prompt += "\nOs PDFs anexos fazem parte da mesma publicação; use-os como fonte."
+    content = [{"type": "document", "source": {"type": "base64", "media_type": "application/pdf",
+                                               "data": base64.b64encode(pdf).decode()}} for pdf in pdfs]
+    content.append({"type": "text", "text": prompt})
+    msg = call_llm(lambda m: client.messages.create(
+        model=m, max_tokens=1500, messages=[{"role": "user", "content": content}]), MODELS)
+    raw = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
+    raw = re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.M).strip()
+    items = json.loads(raw)
+    out = []
+    for it in items if isinstance(items, list) else []:
+        if not isinstance(it, dict):
+            continue
+        it = {k: v if v is None or isinstance(v, bool) else str(v) for k, v in it.items()}
+        _, errs = parse_row({**it, "source_url": src})  # mesma validação do CSV curado
+        if errs:
+            _log(f"[aviso] {src}: item descartado ({'; '.join(errs)})")
+            continue
+        out.append(it)
+    return out
+
+
+def stage(rows, staged):
+    """Acrescenta a staged.csv, para revisão humana, linhas (item, fonte, motivo)."""
+    if not rows:
+        return
     new = not Path(staged).exists()
     with open(staged, "a", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=FIELDS)
+        w = csv.DictWriter(fh, fieldnames=STAGED_FIELDS)
         if new:
             w.writeheader()
-        for fp in files:
-            text = Path(fp).read_text(encoding="utf-8")[:20000]
-            prompt = f"{PROMPT}\n\n<texto>\n{text}\n</texto>"
-            try:
-                msg = call_llm(lambda m: client.messages.create(
-                    model=m, max_tokens=1500, messages=[{"role": "user", "content": prompt}]), MODELS)
-            except Exception as exc:
-                _log(f"[aviso] falha ao processar {fp}: {type(exc).__name__}")
-                continue
-            raw = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
-            raw = re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.M).strip()
-            try:
-                items = json.loads(raw)
-            except json.JSONDecodeError:
-                _log(f"[aviso] resposta não é JSON para {fp}")
-                continue
-            for it in items if isinstance(items, list) else []:
-                if not isinstance(it, dict):
-                    continue
-                _, errs = parse_row({**it, "source_url": fp})  # mesma validação do CSV curado
-                if errs:
-                    _log(f"[aviso] {fp}: item descartado ({'; '.join(errs)})")
-                    continue
-                w.writerow({k: safe_cell(it.get(k)) for k in FIELDS[:-1]} | {"source_url": fp})
+        for it, src, why in rows:
+            w.writerow({k: safe_cell(it.get(k)) for k in FIELDS[:-1]} | {"source_url": src, "motivo": why})
+
+
+def extract(files, staged):
+    client = llm_client()
+    rows = []
+    for fp in files:
+        try:
+            items = extract_items(client, Path(fp).read_text(encoding="utf-8"), fp)
+        except json.JSONDecodeError:
+            _log(f"[aviso] resposta não é JSON para {fp}")
+            continue
+        except Exception as exc:
+            _log(f"[aviso] falha ao processar {fp}: {type(exc).__name__}")
+            continue
+        rows += [(it, fp, "extraída de arquivo local") for it in items]
+    stage(rows, staged)
     print(f"Revise {staged} e copie as linhas corretas para data/polls.csv.")
 
 

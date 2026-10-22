@@ -1,0 +1,6 @@
+nome,feed,ativo,observacao
+Quaest,https://quaest.com.br/feed/,sim,"robots.txt permite; sem termos de uso publicados (conferido em 22/10/2026)"
+Paraná Pesquisas,https://paranapesquisas.com.br/feed/,sim,"robots.txt permite; termos de uso não restringem coleta (conferido em 22/10/2026)"
+Poder360 (PoderData),https://www.poder360.com.br/tag/poderdata/feed/,não,"robots.txt permite, mas a página Reprodução de material exige autorização expressa; ativar só com autorização"
+Datafolha,https://datafolha.folha.uol.com.br/,não,"robots.txt bloqueia anthropic-ai e Claude; não usar"
+Ipec,https://www.ipec-inteligencia.com.br/,não,"robots.txt bloqueia ClaudeBot; não usar"

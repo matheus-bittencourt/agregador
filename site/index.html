@@ -34,6 +34,7 @@ th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--bd)}
 th{font-weight:600;color:var(--mut);font-size:.82rem}
 td.n,th.n{text-align:right}
 .hol{opacity:.8}
+.auto{font-size:.75rem;color:var(--mut);margin-left:6px}
 .note{color:var(--mut);font-size:.82rem;max-width:68ch;margin-top:22px}
 .note p{margin:0 0 8px}
 :focus-visible{outline:2px solid var(--b);outline-offset:2px}
@@ -61,7 +62,7 @@ td.n,th.n{text-align:right}
 <tbody id="rows"></tbody></table></div>
 
 <div class="note">
-<p><b>Sobre os dados.</b> Contém apenas as pesquisas de Datafolha e Quaest que encontrei em notícias; não é um conjunto exaustivo. “—” indica campo não localizado. Os dados vêm de <code>polls.json</code>, gerado por <code>ingest.py</code>; “não confirmado” significa que o registro ainda não foi cruzado com o arquivo do TSE.</p>
+<p><b>Sobre os dados.</b> Não é um conjunto exaustivo. A cada 2 horas um robô verifica as publicações de Quaest e Paraná Pesquisas e acrescenta as pesquisas nacionais novas com registro no TSE; elas aparecem com a marca <i>auto</i>, que leva à fonte, porque foram extraídas automaticamente e não passaram por revisão humana. As demais foram incluídas à mão. “—” indica campo não localizado. Os dados vêm de <code>polls.json</code>, gerado por <code>ingest.py</code>; “não confirmado” significa que o registro ainda não foi cruzado com o arquivo do TSE.</p>
 <p><b>Método.</b> Tendência por suavização com núcleo gaussiano (10 dias), ponderada pela amostra (1.000 quando desconhecida). A faixa é ±1,96 erro amostral, simplificado. Não é um modelo bayesiano e não corrige efeito de casa. Pontos vazados são simulações anteriores ao 1º turno.</p>
 </div>
 </main>
@@ -91,6 +92,12 @@ function trend(rows,k,x0,x1){
     cur.push({t:t,p:p,lo:p-se,hi:p+se});
   }
   return segs;
+}
+
+function auto(o){
+  if(!o.a)return "";
+  var t=' title="Coletada automaticamente, sem revisão humana"';
+  return /^https?:\/\//.test(o.s||"")?'<a class="auto" href="'+esc(o.s)+'" target="_blank" rel="noopener noreferrer"'+t+'>auto</a>':'<span class="auto"'+t+'>auto</span>';
 }
 
 function render(){
@@ -137,7 +144,7 @@ function render(){
   }else big.innerHTML="";
   tb.innerHTML=rows.slice().reverse().map(function(o){
     var a=val(o,"l"),b=val(o,"f"),df=b-a;
-    return "<tr"+(o.k==="sim"?' class="hol"':"")+"><td>"+fd(o.d)+"</td><td>"+esc(o.i)+"</td><td>"+(o.r?esc(o.r)+(o.v?"":" (não confirmado)"):"—")+"</td><td>"+(o.k==="sim"?"Simulação":"2º turno")+'</td><td class="n">'+(o.n?o.n.toLocaleString("pt-BR"):"—")+'</td><td class="n">'+f1(a)+'</td><td class="n">'+f1(b)+'</td><td class="n">'+(df>=0?"+":"−")+f1(Math.abs(df))+"</td></tr>";
+    return "<tr"+(o.k==="sim"?' class="hol"':"")+"><td>"+fd(o.d)+"</td><td>"+esc(o.i)+auto(o)+"</td><td>"+(o.r?esc(o.r)+(o.v?"":" (não confirmado)"):"—")+"</td><td>"+(o.k==="sim"?"Simulação":"2º turno")+'</td><td class="n">'+(o.n?o.n.toLocaleString("pt-BR"):"—")+'</td><td class="n">'+f1(a)+'</td><td class="n">'+f1(b)+'</td><td class="n">'+(df>=0?"+":"−")+f1(Math.abs(df))+"</td></tr>";
   }).join("");
 }
 
@@ -149,14 +156,22 @@ function boot(j){
   D=j.polls;
   if(j.election_date)ELEC=T(j.election_date);
   var insts=[];D.forEach(function(o){if(insts.indexOf(o.i)<0)insts.push(o.i)});
-  $("#inst").innerHTML=insts.map(function(n){return '<label><input type="checkbox" data-i="'+esc(n)+'" checked> '+esc(n)+"</label>"}).join("");
-  var g=new Date(j.generated_at),nv=D.filter(function(o){return o.v}).length;
-  $("#upd").textContent="Atualizado em "+g.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})+". "+D.length+" pesquisas, "+nv+" confirmadas no registro do TSE.";
+  $("#inst").innerHTML=insts.map(function(n){return '<label><input type="checkbox" data-i="'+esc(n)+'"'+(st.off[n]?"":" checked")+"> "+esc(n)+"</label>"}).join("");
+  var g=new Date(j.generated_at),nv=D.filter(function(o){return o.v}).length,na=D.filter(function(o){return o.a}).length;
+  $("#upd").textContent="Fontes verificadas em "+g.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})+" (a cada 2 h). "+D.length+" pesquisas, "+nv+" confirmadas no registro do TSE"+(na?", "+na+" coletadas automaticamente":"")+".";
   render();
 }
-fetch("polls.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(boot).catch(function(){
-  $("#upd").textContent="Não foi possível carregar polls.json. Sirva a pasta por HTTP (python -m http.server) e rode ingest.py antes.";
-});
+// Busca polls.json de novo a cada 5 min; só redesenha se houver versão nova.
+var GEN=null;
+function load(first){
+  fetch("polls.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+    if(j.generated_at!==GEN){GEN=j.generated_at;boot(j)}
+  }).catch(function(){
+    if(first)$("#upd").textContent="Não foi possível carregar polls.json. Sirva a pasta por HTTP (python -m http.server) e rode ingest.py antes.";
+  });
+}
+load(true);
+setInterval(load,5*60*1000);
 </script>
 </body>
 </html>

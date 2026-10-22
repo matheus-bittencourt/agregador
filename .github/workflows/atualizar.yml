@@ -1,0 +1,62 @@
+# A cada 2 h: coleta pesquisas novas, regenera site/polls.json, salva no repositório e publica site/ no GitHub Pages.
+# Também publica a cada push no main (edições à mão no polls.csv), sem coletar.
+# Requer o segredo ANTHROPIC_API_KEY e, em Settings > Pages, a origem "GitHub Actions".
+name: Atualizar e publicar
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"  # UTC; o GitHub pode atrasar alguns minutos
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: atualizar
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install anthropic
+      - run: python -m unittest discover -s tests
+      - name: Coletar pesquisas novas
+        if: github.event_name != 'push'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LLM_MODELS: claude-sonnet-5-5,claude-haiku-5-5
+        run: python collect.py
+      - run: python ingest.py
+      - name: Salvar dados no repositório
+        if: github.event_name != 'push'
+        run: |
+          git add -A data site
+          if git diff --cached --quiet -- data; then echo "Nada novo nas fontes."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Atualização automática das pesquisas"
+          git pull --rebase
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

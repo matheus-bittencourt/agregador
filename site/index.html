@@ -61,7 +61,10 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 .tag.au{color:var(--a)}
 .tag.ep{color:var(--mut)}
 .eleito{color:var(--ok);font-weight:600;font-size:.78rem;margin-left:6px}
-.news{margin-top:28px}
+.news,.wiki{margin-top:28px}
+.wiki .tw{margin-top:10px}
+.more{font:inherit;font-size:.85rem;color:var(--b);background:none;border:1px solid var(--bd);border-radius:6px;padding:4px 10px;margin-top:10px;cursor:pointer}
+.wiki .big b{font-size:clamp(1.6rem,5vw,2.2rem)}
 .news ul{list-style:none;margin:0;padding:0}
 .news li{padding:8px 0;border-bottom:1px solid var(--bd);font-size:.92rem}
 .news li:last-child{border:0}
@@ -110,6 +113,17 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 <tbody id="rows"></tbody></table></div>
 <p class="src"><span class="tag ep">Institutos</span>percentuais divulgados pelos institutos de pesquisa · <span class="tag of">Oficial · TSE</span>registro e confirmação no arquivo de pesquisas do TSE · <span class="tag au">auto</span>coletada por robô, sem revisão humana</p>
 
+<section class="card wiki" id="wiki" hidden>
+  <div class="hd"><h2>Outras pesquisas na imprensa</h2></div>
+  <div class="big" id="wbig"></div>
+  <p class="meta" id="wmeta"></p>
+  <div class="tw"><table>
+  <thead><tr><th>Campo até</th><th>Instituto</th><th class="n">Amostra</th><th class="n">Margem</th><th class="n">Lula</th><th class="n">Flávio</th><th class="n">Dif.</th><th>Fonte</th></tr></thead>
+  <tbody></tbody></table></div>
+  <button type="button" class="more" id="wmore" hidden></button>
+  <p class="src"></p>
+</section>
+
 <section class="card news" id="news" hidden>
   <div class="hd"><h2>Manchetes da eleição</h2></div>
   <ul></ul>
@@ -117,7 +131,7 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 </section>
 
 <div class="note">
-<p><b>Sobre os dados.</b> Não é um conjunto exaustivo. A cada 2 horas um robô verifica as publicações de Quaest e Paraná Pesquisas e acrescenta as pesquisas nacionais novas com registro no TSE; elas aparecem com a marca <i>auto</i>, que leva à fonte, porque foram extraídas automaticamente e não passaram por revisão humana. As demais foram incluídas à mão. “—” indica campo não localizado. Os dados vêm de <code>polls.json</code>, gerado por <code>ingest.py</code>; “não confirmado” significa que o registro ainda não foi cruzado com o arquivo do TSE.</p>
+<p><b>Sobre os dados.</b> Não é um conjunto exaustivo. A cada 2 horas um robô verifica as publicações de Quaest e Paraná Pesquisas e acrescenta as pesquisas nacionais novas com registro no TSE; elas aparecem com a marca <i>auto</i>, que leva à fonte, porque foram extraídas automaticamente e não passaram por revisão humana. As demais foram incluídas à mão. O bloco “Outras pesquisas na imprensa” traz a tabela compilada na Wikipédia, mais completa e atualizada, mas fonte secundária: não passa pelo registro do TSE e por isso fica fora do gráfico e da tendência; cada linha leva à matéria original. “—” indica campo não localizado. Os dados vêm de <code>polls.json</code>, gerado por <code>ingest.py</code>; “não confirmado” significa que o registro ainda não foi cruzado com o arquivo do TSE.</p>
 <p><b>Método.</b> Tendência por suavização com núcleo gaussiano (10 dias), ponderada pela amostra (1.000 quando desconhecida). A faixa é ±1,96 erro amostral, simplificado. Não é um modelo bayesiano e não corrige efeito de casa. Pontos vazados são simulações anteriores ao 1º turno.</p>
 </div>
 </main>
@@ -204,7 +218,7 @@ function render(){
 }
 
 $("#inst").addEventListener("change",function(e){st.off[e.target.getAttribute("data-i")]=!e.target.checked;render()});
-$("#valid").addEventListener("change",function(e){st.valid=e.target.checked;render()});
+$("#valid").addEventListener("change",function(e){st.valid=e.target.checked;render();renderWiki()});
 $("#sim").addEventListener("change",function(e){st.sim=e.target.checked;render()});
 
 function boot(j){
@@ -306,6 +320,40 @@ function tick(){
 tick();
 setInterval(function(){if(Date.now()>=CLOSE-30*60*1000||new Date().getMinutes()%10===0)tick()},60*1000);
 document.addEventListener("visibilitychange",function(){if(!document.hidden)tick()});
+
+// ---- Outras pesquisas: site/wiki.json, gerado por wiki.py a partir da tabela da Wikipédia ----
+// Fonte secundária, fora do gráfico e da tendência (sem registro do TSE); cada linha leva à matéria citada.
+var WK=null,WALL=false,WMAX=12;
+function renderWiki(){
+  if(!WK||!WK.itens||!WK.itens.length)return;
+  var safe=function(u){return /^https:\/\//.test(u||"")?u:"#"};
+  var vl=function(o,k){return st.valid?o[k]/(o.l+o.f)*100:o[k]};
+  // Média simples da pesquisa mais recente de cada instituto com campo nos últimos 7 dias.
+  var top=T(WK.itens[0].d),seen={},last=WK.itens.filter(function(o){
+    if(seen[o.i]||top-T(o.d)>7*DAY)return false;seen[o.i]=1;return true});
+  var ml=0,mf=0;last.forEach(function(o){ml+=vl(o,"l");mf+=vl(o,"f")});ml/=last.length;mf/=last.length;
+  var df=mf-ml;
+  $("#wbig").innerHTML='<div><b style="color:'+CA+'">'+f1(ml)+'%</b><span><i class="dot" style="background:'+CA+'"></i>Lula, média</span></div>'+
+    '<div><b style="color:'+CB+'">'+f1(mf)+'%</b><span><i class="dot" style="background:'+CB+'"></i>Flávio Bolsonaro, média</span></div>'+
+    '<div><b>'+(df>=0?"+":"−")+f1(Math.abs(df))+'</b><span>pontos, '+(df>=0?"Flávio":"Lula")+" à frente</span></div>";
+  $("#wmeta").textContent="Média simples da pesquisa mais recente de "+last.length+" institutos com campo encerrado até 7 dias antes da última ("+fd(WK.itens[0].d)+"), "+(st.valid?"em votos válidos":"sobre o total")+". Não entra na tendência acima.";
+  var rows=WALL?WK.itens:WK.itens.slice(0,WMAX);
+  $("#wmore").hidden=WK.itens.length<=WMAX;
+  $("#wmore").textContent=WALL?"Mostrar só as "+WMAX+" mais recentes":"Mostrar todas ("+WK.itens.length+")";
+  $("#wiki tbody").innerHTML=rows.map(function(o){
+    var a=vl(o,"l"),b=vl(o,"f"),d=b-a;
+    return "<tr><td>"+fd(o.d)+"</td><td>"+esc(o.i)+'</td><td class="n">'+(o.n?o.n.toLocaleString("pt-BR"):"—")+'</td><td class="n">'+(o.m!=null?"±"+esc(String(o.m).replace(".",",")):"—")+
+      '</td><td class="n">'+f1(a)+'</td><td class="n">'+f1(b)+'</td><td class="n">'+(d>=0?"+":"−")+f1(Math.abs(d))+
+      '</td><td><a href="'+esc(safe(o.u))+'" target="_blank" rel="noopener noreferrer">matéria</a></td></tr>';
+  }).join("");
+  var g=new Date(WK.generated_at),f=WK.fonte||{};
+  $("#wiki .src").innerHTML='<span class="tag im">Imprensa · via Wikipédia</span>percentuais divulgados pelos institutos e publicados na imprensa, compilados por editores da <a href="'+esc(safe(f.url))+'" target="_blank" rel="noopener">Wikipédia</a>'+
+    (f.revisao?' (<a href="'+esc(safe(f.revisao))+'" target="_blank" rel="noopener">versão lida</a>)':"")+", "+esc(f.licenca||"CC BY-SA 4.0")+
+    " · não conferidas no registro do TSE · lido em "+g.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})+" (a cada 2 h)";
+  $("#wiki").hidden=false;
+}
+$("#wmore").addEventListener("click",function(){WALL=!WALL;renderWiki()});
+fetch("wiki.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){WK=j;renderWiki()}).catch(function(){});
 
 // ---- Manchetes: site/news.json, gerado por news.py a partir do RSS da Agência Brasil ----
 fetch("news.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){

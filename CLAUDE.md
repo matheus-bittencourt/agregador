@@ -7,9 +7,10 @@ Painel estático que agrega pesquisas de intenção de voto registradas no TSE. 
 - `data/polls.csv`: fonte de verdade, editada à mão, a partir de `data/staged.csv` ou pelo `collect.py` (linhas com `origem=auto`).
 - `ingest.py`: valida, deduplica, confirma no TSE (`--tse`), grava `data/polls.db` (SQLite) e exporta `site/polls.json`. `--extract` usa a API da Anthropic para extrair pesquisas de textos.
 - `collect.py`: coleta automática (GitHub Actions, a cada 2 h). Lê os feeds ativos de `data/sources.csv`, manda os textos e PDFs novos ao LLM e publica direto o que passa nas travas de `publish_problem()`; o resto vai para `data/staged.csv` com o motivo. `data/seen.json` guarda o que já foi processado.
-- `.github/workflows/atualizar.yml`: roda `tse.py` (com cache do último arquivo bom), `collect.py`, `news.py` e `ingest.py`, faz commit dos dados e publica `site/` no GitHub Pages. `site/polls.json` não é versionado: é gerado em cada execução (e localmente pelo `ingest.py`). Linhas inválidas no CSV (código de saída 2) viram aviso e não impedem a publicação.
+- `.github/workflows/atualizar.yml`: roda `tse.py` (com cache do último arquivo bom), `collect.py`, `news.py`, `wiki.py` e `ingest.py`, faz commit dos dados e publica `site/` no GitHub Pages. `site/polls.json` não é versionado: é gerado em cada execução (e localmente pelo `ingest.py`). Linhas inválidas no CSV (código de saída 2) viram aviso e não impedem a publicação.
 - `tse.py`: baixa de `cdn.tse.jus.br` (dados abertos) o registro das pesquisas nacionais e o arquivo de contratantes e grava `data/tse.csv` (latin-1, `;`) para o `--tse`. Roda em toda execução do workflow, porque o `polls.db` não persiste no GitHub Actions.
 - `news.py`: manchetes do RSS de política da Agência Brasil (só título, data e link) -> `site/news.json`. Sem LLM.
+- `wiki.py`: tabela de pesquisas pós-1º turno da Wikipédia (en), lida da página HTML (o `robots.txt` bloqueia `/w/` e a API), com travas de plausibilidade -> `site/wiki.json`. Sem LLM. Fonte secundária: aparece no painel em bloco próprio ("Outras pesquisas na imprensa"), nunca no `polls.csv`, no gráfico ou na tendência.
 - `site/index.html`: painel de arquivo único; lê `polls.json` por `fetch` e busca de novo a cada 5 min. Os widgets de apuração leem direto do navegador os JSON oficiais de `resultados.tse.jus.br` (o TSE libera CORS); os códigos de eleição ficam em `TSE` no script (1º turno 6257, 2º turno 6258).
 - `tests/test_ingest.py`: testes com `unittest`.
 
@@ -41,6 +42,7 @@ cd site && python3 -m http.server 8000   # ver o painel (precisa de HTTP; file:/
 
 - O arquivo do TSE não traz margem de erro nem resultados; margem e percentuais continuam vindo das fontes das pesquisas.
 - O `--extract` e a extração do `collect.py` não foram testados contra as fontes reais (só a leitura dos feeds e o `--dry-run`).
+- Sem o segredo `ANTHROPIC_API_KEY` a extração do `collect.py` falha (TypeError) e nada novo entra no `polls.csv`; o bloco da Wikipédia é o que mantém o painel com as pesquisas recentes.
 - O feed da Quaest traz análises, não todos os lançamentos; pesquisas que só saem na imprensa não são coletadas.
 - Agregação simplificada (suavização por núcleo gaussiano de 10 dias, sem efeito de casa nem modelo bayesiano).
 - Há regras da Justiça Eleitoral sobre divulgação de pesquisas; confirmar com advogado eleitoral se o painel for público.

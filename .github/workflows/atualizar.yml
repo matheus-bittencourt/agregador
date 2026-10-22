@@ -1,4 +1,4 @@
-# A cada 2 h: baixa o registro do TSE, coleta pesquisas novas e manchetes, gera site/polls.json,
+# A cada 2 h: baixa o registro do TSE, coleta pesquisas novas, manchetes e a tabela da Wikipédia, gera site/polls.json,
 # salva os dados no repositório e publica site/ no GitHub Pages (polls.json não é versionado).
 # Também publica a cada push no main (edições à mão no polls.csv), sem coletar.
 # Requer o segredo ANTHROPIC_API_KEY e, em Settings > Pages, a origem "GitHub Actions".
@@ -58,6 +58,9 @@ jobs:
       - name: Manchetes da Agência Brasil
         if: github.event_name != 'push'
         run: python news.py || echo "Feed indisponível; mantém o news.json anterior."
+      - name: Pesquisas compiladas na Wikipédia
+        if: github.event_name != 'push'
+        run: python wiki.py || echo "Página indisponível ou sem linhas válidas; mantém o wiki.json anterior."
       - name: Gerar polls.json
         # Código 2 = alguma linha do polls.csv é inválida; o JSON sai com as válidas e o site é publicado mesmo assim.
         run: |
@@ -70,7 +73,7 @@ jobs:
         if: github.event_name != 'push'
         run: |
           git add -A data site
-          if git diff --cached --quiet -- data site/news.json; then echo "Nada novo nas fontes."; exit 0; fi
+          if git diff --cached --quiet -- data site/news.json site/wiki.json; then echo "Nada novo nas fontes."; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git commit -m "Atualização automática das pesquisas"

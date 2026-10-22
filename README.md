@@ -6,6 +6,7 @@ data/tse.csv     arquivo de registros do TSE (gerado pelo tse.py)
 ingest.py        valida, deduplica, confirma no TSE, grava SQLite e exporta JSON
 collect.py       coleta automática a cada 2 h (fontes em data/sources.csv)
 news.py          manchetes da Agência Brasil -> site/news.json
+wiki.py          pesquisas recentes compiladas na Wikipédia -> site/wiki.json
 tse.py           baixa o registro das pesquisas do TSE -> data/tse.csv
 site/index.html  painel (lê polls.json)
 site/polls.json  gerado pelo ingest.py (não versionado)
@@ -26,7 +27,8 @@ O painel precisa ser servido por HTTP (abrir o arquivo direto não carrega o JSO
 
 1. **Registro do TSE.** `python3 tse.py` baixa do portal de dados abertos do TSE o arquivo de pesquisas nacionais registradas e o de contratantes (o TSE regenera os dois todo dia) e grava `data/tse.csv`; o workflow faz isso a cada execução. O `ingest.py --tse` cruza pelo registro (o TSE grava `BR087292026`, os institutos divulgam `BR-08729/2026`; os dois formatos são aceitos), confere se a empresa registrada é o instituto da pesquisa, marca a pesquisa como confirmada e completa amostra e contratante. O arquivo não traz margem de erro nem percentuais, então os resultados vêm do passo seguinte.
 2. **Resultados.** Adicione linhas em `data/polls.csv`, preferencialmente a partir do site do instituto. Para acelerar, `python3 ingest.py --extract artigos/*.txt` usa a API da Anthropic (`pip install anthropic`, variável `ANTHROPIC_API_KEY`) para extrair pesquisas de textos salvos e grava em `data/staged.csv`. **Revise sempre a mão** antes de copiar para `polls.csv`; o script nunca publica o que o modelo extraiu sozinho.
-3. **Normalização.** O CSV guarda os percentuais sobre o total de entrevistados. A conversão para votos válidos é feita no painel.
+3. **Outras pesquisas (Wikipédia).** `python3 wiki.py` lê a tabela de pesquisas pós-1º turno da página em inglês da Wikipédia (só a página `/wiki/`; o `robots.txt` bloqueia `/w/` e a API) e grava `site/wiki.json`, com o link da matéria citada em cada linha. Não usa LLM nem chave. É fonte secundária, sem registro do TSE: o painel mostra essas linhas num bloco à parte, fora do gráfico e da tendência, e linhas implausíveis (soma acima de 100%, data fora de 30 dias, sem link https) são descartadas.
+4. **Normalização.** O CSV guarda os percentuais sobre o total de entrevistados. A conversão para votos válidos é feita no painel.
 
 ## Confiabilidade das chamadas ao LLM
 

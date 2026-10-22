@@ -1,4 +1,5 @@
-# A cada 2 h: coleta pesquisas novas e manchetes, confirma registros no TSE, regenera site/polls.json, salva no repositório e publica site/ no GitHub Pages.
+# A cada 2 h: baixa o registro do TSE, coleta pesquisas novas e manchetes, gera site/polls.json,
+# salva os dados no repositório e publica site/ no GitHub Pages (polls.json não é versionado).
 # Também publica a cada push no main (edições à mão no polls.csv), sem coletar.
 # Requer o segredo ANTHROPIC_API_KEY e, em Settings > Pages, a origem "GitHub Actions".
 name: Atualizar e publicar
@@ -29,6 +30,24 @@ jobs:
           python-version: "3.12"
       - run: pip install anthropic
       - run: python -m unittest discover -s tests
+      # O tse.csv não é versionado: guarda o último download bom para usar quando o TSE não responder.
+      - name: Restaurar último arquivo do TSE
+        uses: actions/cache/restore@v4
+        with:
+          path: data/tse.csv
+          key: tse-${{ github.run_id }}
+          restore-keys: tse-
+      - name: Registro das pesquisas no TSE (dados abertos)
+        id: tse
+        run: |
+          if python tse.py; then echo "novo=1" >> "$GITHUB_OUTPUT"
+          else echo "::warning::TSE indisponível; usando o último arquivo guardado, se houver."; fi
+      - name: Guardar arquivo do TSE
+        if: steps.tse.outputs.novo == '1'
+        uses: actions/cache/save@v4
+        with:
+          path: data/tse.csv
+          key: tse-${{ github.run_id }}
       - name: Coletar pesquisas novas
         if: github.event_name != 'push'
         continue-on-error: true  # sem chave ou com a API fora, ainda publica manchetes e apuração
@@ -39,11 +58,14 @@ jobs:
       - name: Manchetes da Agência Brasil
         if: github.event_name != 'push'
         run: python news.py || echo "Feed indisponível; mantém o news.json anterior."
-      - name: Registro das pesquisas no TSE (dados abertos)
-        run: python tse.py || echo "TSE indisponível; as pesquisas ficam sem confirmação nesta rodada."
       - name: Gerar polls.json
+        # Código 2 = alguma linha do polls.csv é inválida; o JSON sai com as válidas e o site é publicado mesmo assim.
         run: |
+          set +e
           if [ -f data/tse.csv ]; then python ingest.py --tse data/tse.csv; else python ingest.py; fi
+          code=$?
+          if [ "$code" -eq 2 ]; then echo "::warning::Linhas inválidas no data/polls.csv foram ignoradas; veja o log acima."; exit 0; fi
+          exit "$code"
       - name: Salvar dados no repositório
         if: github.event_name != 'push'
         run: |

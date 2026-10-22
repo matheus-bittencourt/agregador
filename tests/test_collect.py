@@ -65,9 +65,31 @@ class Feed(unittest.TestCase):
         self.assertEqual(collect.pdf_links(html, "https://a.br/p"), ["https://a.br/r.pdf"])
 
 
+def tse_row(**kw):
+    base = dict(NR_PROTOCOLO_REGISTRO="BR012342026", NM_EMPRESA="QUAEST PESQUISAS, CONSULTORIA E PROJETOS",
+                NM_EMPRESA_FANTASIA="#NULO#", DS_CARGO="Presidente", SG_UF="BR",
+                DS_DADO_MUNICIPIO="A área de abrangência da coleta é todo o território do Brasil.")
+    return {**base, **kw}
+
+
+TSE = {"BR-01234/2026": tse_row()}
+
+
 class Guardrails(unittest.TestCase):
     def test_accepts_valid_national_poll(self):
-        self.assertIsNone(collect.publish_problem(poll(), set(), TODAY))
+        self.assertIsNone(collect.publish_problem(poll(), set(), TODAY, TSE))
+
+    def test_tse_registry_checks(self):
+        cases = {
+            "sem arquivo do TSE": None,
+            "registro ausente": {},
+            "outro cargo": {"BR-01234/2026": tse_row(DS_CARGO="Governador, Senador")},
+            "pesquisa estadual": {"BR-01234/2026": tse_row(
+                DS_DADO_MUNICIPIO="A pesquisa será realizada no Estado do Tocantins.")},
+            "outro instituto": {"BR-01234/2026": tse_row(NM_EMPRESA="DATAFOLHA INSTITUTO DE PESQUISAS LTDA.")},
+        }
+        for name, tse in cases.items():
+            self.assertIsNotNone(collect.publish_problem(poll(), set(), TODAY, tse), name)
 
     def test_rejections(self):
         cases = {
@@ -82,7 +104,7 @@ class Guardrails(unittest.TestCase):
         }
         for name, it in cases.items():
             known = {"BR-01234/2026"} if name == "já conhecido" else set()
-            self.assertIsNotNone(collect.publish_problem(it, known, TODAY), name)
+            self.assertIsNotNone(collect.publish_problem(it, known, TODAY, TSE), name)
 
 
 class Collect(unittest.TestCase):
@@ -95,7 +117,7 @@ class Collect(unittest.TestCase):
             calls.append(link)
             return found
         seen = {} if seen is None else seen
-        pub, rev = collect.collect([{"feed": "https://a.br/feed"}], seen, set(), extract,
+        pub, rev = collect.collect([{"feed": "https://a.br/feed"}], seen, set(), extract, TSE,
                                    fetch=fake_fetch(pages), today=TODAY, log=lambda m: None)
         return pub, rev, calls, seen
 
@@ -114,7 +136,7 @@ class Collect(unittest.TestCase):
         def extract(text, link, pdfs):
             raise RuntimeError("API fora")
         seen = {}
-        collect.collect([{"feed": "https://a.br/feed"}], seen, set(), extract,
+        collect.collect([{"feed": "https://a.br/feed"}], seen, set(), extract, TSE,
                         fetch=fake_fetch({"https://a.br/feed": FEED}), today=TODAY, log=lambda m: None)
         self.assertNotIn("https://a.br/nova", seen)
 

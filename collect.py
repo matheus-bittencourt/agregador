@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Coleta automática: lê os feeds de data/sources.csv, extrai pesquisas novas com o LLM e
-publica direto em data/polls.csv (origem=auto) as que passam nas travas de PUBLISH_RULES.
+publica direto em data/polls.csv (origem=auto) as que passam nas travas de publish_problem(),
+inclusive a conferência do registro no arquivo do TSE (data/tse.csv, gerado pelo tse.py).
 O que não passa vai para data/staged.csv, com o motivo, para revisão humana.
 
 Uso:
@@ -31,6 +32,10 @@ CONTENT = "{http://purl.org/rss/1.0/modules/content/}encoded"
 RELEVANT = re.compile(r"lula.*fl[áa]vio|fl[áa]vio.*lula|BR-?\d{5}/2026", re.I | re.S)
 MAX_SUM = 97  # Lula + Flávio acima disso sugere votos válidos lidos como total
 MAX_AGE = 30  # dias
+# Abrangência no texto do registro do TSE (já sem acentos e em maiúsculas).
+NATIONAL_AREA = re.compile(r"NACIONAL|TERRITORIO (BRASILEIRO|DO BRASIL)|TODO O (PAIS|BRASIL)|TODOS OS ESTADOS"
+                           r"|TODAS AS (27 )?(UFS|UNIDADES DA FEDERACAO)")
+LOCAL_AREA = re.compile(r"\b(ESTADO|MUNICIPIO|CIDADE) D[EOA]\b")
 MAX_PDF = 10 * 2**20  # bytes; institutos como a Paraná Pesquisas só publicam os números em PDF
 PDF_LINK = re.compile(r'href="(https?://[^"]+?\.pdf)"', re.I)
 
@@ -126,7 +131,7 @@ def load_sources(path):
         return [r for r in csv.DictReader(fh) if (r.get("ativo") or "").strip().lower() == "sim"]
 
 
-def publish_problem(it, known, today):
+def publish_problem(it, known, today, tse):
     """Motivo para NÃO publicar automaticamente (None = pode publicar)."""
     p, errs = ingest.parse_row(it)
     if errs:
@@ -139,6 +144,19 @@ def publish_problem(it, known, today):
         return "sem registro BR-00000/2026"
     if p["r"] in known:
         return "registro já está no polls.csv"
+    if tse is None:
+        return "arquivo do TSE indisponível; não deu para conferir o registro"
+    row = tse.get(p["r"])
+    if not row:
+        return "registro não encontrado no arquivo do TSE"
+    if "PRESIDENTE" not in ingest.fold(row.get("DS_CARGO") or "PRESIDENTE"):
+        return "registro do TSE não é de pesquisa para Presidente"
+    # Registros "BR-" também cobrem pesquisas presidenciais feitas num só estado (ex.: Paraná Pesquisas no TO).
+    area = ingest.fold(f"{row.get('DS_DADO_MUNICIPIO') or ''} {row.get('DS_PLANO_AMOSTRAL') or ''}")
+    if LOCAL_AREA.search(area) and not NATIONAL_AREA.search(area):
+        return "registro do TSE indica pesquisa estadual ou municipal"
+    if empresa := ingest.other_institute(p["i"], row):
+        return f"registro do TSE pertence a {empresa}"
     if p["l"] + p["f"] > MAX_SUM:
         return f"Lula + Flávio > {MAX_SUM}%: provavelmente votos válidos"
     d = date.fromisoformat(p["d"])
@@ -163,9 +181,11 @@ def append_polls(path, rows):
                        | {"source_url": src, "origem": "auto"})
 
 
-def collect(sources, seen, known, extract, fetch=fetch, fetch_bytes=fetch_bytes, today=None, max_items=12,
+def collect(sources, seen, known, extract, tse, fetch=fetch, fetch_bytes=fetch_bytes, today=None, max_items=12,
             log=ingest._log):
     """Percorre os feeds e devolve (publicar, revisar). Atualiza `seen` e `known` no lugar.
+
+    `tse` é o índice de ingest.load_tse(); sem ele (None) nada é publicado direto, tudo vai para revisão.
 
     Um item só entra em `seen` depois de processado; se o LLM falhar, tenta de novo na próxima rodada.
     """
@@ -212,7 +232,7 @@ def collect(sources, seen, known, extract, fetch=fetch, fetch_bytes=fetch_bytes,
             done += 1
             seen[link] = today.isoformat()
             for p in found:
-                why = publish_problem(p, known, today)
+                why = publish_problem(p, known, today, tse)
                 if why:
                     review.append((p, link, why))
                 else:
@@ -229,6 +249,7 @@ def main():
     ap.add_argument("--seed", default="data/polls.csv")
     ap.add_argument("--seen", default="data/seen.json")
     ap.add_argument("--staged", default="data/staged.csv")
+    ap.add_argument("--tse", default="data/tse.csv", help="arquivo gerado pelo tse.py")
     ap.add_argument("--max", type=int, default=12, help="máximo de textos enviados ao LLM por rodada")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
@@ -236,6 +257,9 @@ def main():
     seen = json.loads(Path(a.seen).read_text(encoding="utf-8")) if Path(a.seen).exists() else {}
     polls, _ = ingest.load_seed(a.seed)
     known = {p["r"] for p in polls.values() if p["r"]}
+    tse = ingest.load_tse(a.tse) if Path(a.tse).exists() else None
+    if tse is None:
+        ingest._log(f"[aviso] {a.tse} não existe: nada será publicado direto, tudo vai para revisão")
     if a.dry_run:
         def extract(text, link, pdfs):
             print(f"[dry-run] enviaria ao LLM: {link} ({len(text)} caracteres, {len(pdfs)} PDF)")
@@ -245,7 +269,7 @@ def main():
         def extract(text, link, pdfs):
             return ingest.extract_items(client, text, link, pdfs)
 
-    publish, review = collect(load_sources(a.sources), seen, known, extract, max_items=a.max)
+    publish, review = collect(load_sources(a.sources), seen, known, extract, tse, max_items=a.max)
     if a.dry_run:
         return
     if publish:

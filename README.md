@@ -8,7 +8,7 @@ collect.py       coleta automática a cada 2 h (fontes em data/sources.csv)
 news.py          manchetes da Agência Brasil -> site/news.json
 tse.py           baixa o registro das pesquisas do TSE -> data/tse.csv
 site/index.html  painel (lê polls.json)
-site/polls.json  gerado pelo ingest.py
+site/polls.json  gerado pelo ingest.py (não versionado)
 ```
 
 ## Rodar
@@ -51,7 +51,7 @@ O CSV é a fonte de verdade: o banco só guarda o que foi confirmado e completad
 `.github/workflows/atualizar.yml` roda a cada 2 horas no GitHub Actions:
 
 1. `collect.py` lê os feeds marcados com `ativo=sim` em `data/sources.csv`, ignora o que já está em `data/seen.json`, busca a página e os PDFs do instituto quando o feed só traz resumo e manda o texto à API da Anthropic (via `call_llm()`).
-2. Cada pesquisa extraída passa pela validação do CSV e pelas travas de publicação: precisa ser nacional, do 2º turno real, ter registro `BR-00000/2026` que ainda não esteja no CSV, Lula + Flávio ≤ 97% (acima disso costuma ser voto válido lido como total) e data dos últimos 30 dias. As que passam entram em `data/polls.csv` com `origem=auto`; as outras vão para `data/staged.csv` com o motivo.
+2. Cada pesquisa extraída passa pela validação do CSV e pelas travas de publicação: precisa ser nacional, do 2º turno real, ter registro `BR-00000/2026` que ainda não esteja no CSV e que exista no arquivo do TSE como pesquisa para Presidente, do mesmo instituto e sem indicação de abrangência estadual ou municipal (sem o arquivo do TSE, nada é publicado direto), Lula + Flávio ≤ 97% (acima disso costuma ser voto válido lido como total) e data dos últimos 30 dias. As que passam entram em `data/polls.csv` com `origem=auto`; as outras vão para `data/staged.csv` com o motivo.
 3. `ingest.py` regenera `site/polls.json`, o workflow faz commit dos dados e publica `site/` no GitHub Pages. Um push no `main` também republica, sem coletar.
 
 O painel busca `polls.json` de novo a cada 5 minutos. Pesquisas automáticas aparecem com a marca *auto*, que leva à fonte.

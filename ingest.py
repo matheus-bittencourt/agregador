@@ -108,13 +108,28 @@ def load_seed(path):
     return polls, bad
 
 
-def enrich(polls, path, encoding, delimiter):
+def load_tse(path, encoding="latin-1", delimiter=";"):
+    """Índice registro -> linha do arquivo de pesquisas do TSE."""
     with open(path, newline="", encoding=encoding) as fh:
         idx = {}
         for row in csv.DictReader(fh, delimiter=delimiter):
             reg = norm_reg(pick(row, TSE_COLS["registro"]))
             if reg:
                 idx[reg] = row
+    return idx
+
+
+def other_institute(inst, row):
+    """Empresa registrada no TSE quando ela NÃO é o instituto informado; None se bate (ou não dá para saber)."""
+    empresa = " ".join(fold(row.get(c)) for c in TSE_COLS["empresa"] if row.get(c) not in (None, *TSE_NULL))
+    nomes = [w for w in re.split(r"[^A-Z0-9]+", fold(inst)) if len(w) >= 4]  # "Genial/Quaest" -> GENIAL, QUAEST
+    if empresa.strip() and nomes and not any(w in empresa for w in nomes):
+        return empresa.strip()[:60]
+    return None
+
+
+def enrich(polls, path, encoding, delimiter):
+    idx = load_tse(path, encoding, delimiter)
     for p in polls.values():
         if not p["r"]:
             continue
@@ -123,10 +138,8 @@ def enrich(polls, path, encoding, delimiter):
             print(f"[aviso] {p['r']} ({p['i']}, {p['d']}) não encontrado no arquivo do TSE", file=sys.stderr)
             continue
         # Registro trocado (de outro instituto) não pode virar "confirmado".
-        empresa = " ".join(fold(row.get(c)) for c in TSE_COLS["empresa"] if row.get(c) not in (None, *TSE_NULL))
-        nomes = [w for w in re.split(r"[^A-Z0-9]+", fold(p["i"])) if len(w) >= 4]  # "Genial/Quaest" -> GENIAL, QUAEST
-        if empresa.strip() and nomes and not any(w in empresa for w in nomes):
-            print(f"[aviso] {p['r']} está registrado no TSE por {empresa.strip()[:60]}, não por {p['i']}; "
+        if empresa := other_institute(p["i"], row):
+            print(f"[aviso] {p['r']} está registrado no TSE por {empresa}, não por {p['i']}; "
                   "não confirmado", file=sys.stderr)
             continue
         p["v"] = True

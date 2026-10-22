@@ -2,10 +2,11 @@
 
 ```
 data/polls.csv   pesquisas curadas (fonte de verdade editável)
-data/tse.csv     arquivo de registros do TSE (você baixa; ver abaixo)
+data/tse.csv     arquivo de registros do TSE (gerado pelo tse.py)
 ingest.py        valida, deduplica, confirma no TSE, grava SQLite e exporta JSON
 collect.py       coleta automática a cada 2 h (fontes em data/sources.csv)
 news.py          manchetes da Agência Brasil -> site/news.json
+tse.py           baixa o registro das pesquisas do TSE -> data/tse.csv
 site/index.html  painel (lê polls.json)
 site/polls.json  gerado pelo ingest.py
 ```
@@ -14,6 +15,7 @@ site/polls.json  gerado pelo ingest.py
 
 ```bash
 python3 ingest.py                       # gera site/polls.json
+python3 tse.py                          # baixa o registro das pesquisas do TSE
 python3 ingest.py --tse data/tse.csv    # também confirma registros no TSE
 cd site && python3 -m http.server 8000  # abrir http://localhost:8000
 ```
@@ -22,7 +24,7 @@ O painel precisa ser servido por HTTP (abrir o arquivo direto não carrega o JSO
 
 ## Fluxo de dados
 
-1. **Registro do TSE.** Baixe o arquivo de pesquisas registradas no portal de dados abertos do TSE ou exporte do PesqEle e salve em `data/tse.csv`. O script cruza pelo número `BR-00000/2026`, marca a pesquisa como confirmada e completa amostra, margem e contratante. Os nomes das colunas em `TSE_COLS` são estimativas: confira o cabeçalho real e ajuste. Esse arquivo costuma trazer os dados do registro, não os percentuais, então os resultados vêm do passo seguinte.
+1. **Registro do TSE.** `python3 tse.py` baixa do portal de dados abertos do TSE o arquivo de pesquisas nacionais registradas e o de contratantes (o TSE regenera os dois todo dia) e grava `data/tse.csv`; o workflow faz isso a cada execução. O `ingest.py --tse` cruza pelo registro (o TSE grava `BR087292026`, os institutos divulgam `BR-08729/2026`; os dois formatos são aceitos), confere se a empresa registrada é o instituto da pesquisa, marca a pesquisa como confirmada e completa amostra e contratante. O arquivo não traz margem de erro nem percentuais, então os resultados vêm do passo seguinte.
 2. **Resultados.** Adicione linhas em `data/polls.csv`, preferencialmente a partir do site do instituto. Para acelerar, `python3 ingest.py --extract artigos/*.txt` usa a API da Anthropic (`pip install anthropic`, variável `ANTHROPIC_API_KEY`) para extrair pesquisas de textos salvos e grava em `data/staged.csv`. **Revise sempre a mão** antes de copiar para `polls.csv`; o script nunca publica o que o modelo extraiu sozinho.
 3. **Normalização.** O CSV guarda os percentuais sobre o total de entrevistados. A conversão para votos válidos é feita no painel.
 

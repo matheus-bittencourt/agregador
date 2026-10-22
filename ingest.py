@@ -16,25 +16,34 @@ import re
 import sqlite3
 import sys
 import time
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 
 ELECTION = "2026-10-25"
-REG = re.compile(r"BR-?(\d{5})/(\d{4})", re.I)
+# Aceita "BR-08729/2026" (como os institutos divulgam) e "BR087292026" (como o TSE grava).
+REG = re.compile(r"\bBR-?(\d{5})/?(\d{4})\b", re.I)
+TSE_NULL = {"#NULO#", "#NE#", "#NULO", "#NE"}
 
-# ATENÇÃO: nomes de colunas do arquivo de dados abertos do TSE. São estimativas e
-# precisam ser conferidos contra o arquivo real; ajuste as listas conforme o cabeçalho.
+# Colunas do arquivo de dados abertos do TSE (pesquisa_eleitoral_2026_BRASIL.csv, conferido em
+# 22/10/2026). O arquivo não traz margem de erro; NM_CONTRATANTE vem do arquivo de contratantes,
+# que o tse.py junta ao principal.
 TSE_COLS = {
-    "registro": ["NR_IDENTIFICACAO_PESQUISA", "NR_PROTOCOLO_REGISTRO", "registro"],
-    "n": ["QT_ENTREVISTADOS", "amostra"],
-    "margem": ["VR_MARGEM_ERRO", "margem"],
+    "registro": ["NR_PROTOCOLO_REGISTRO", "registro"],
+    "n": ["QT_ENTREVISTADO", "amostra"],
     "contratante": ["NM_CONTRATANTE", "contratante"],
+    "empresa": ["NM_EMPRESA", "NM_EMPRESA_FANTASIA", "empresa"],
 }
 
 
 def norm_reg(s):
     m = REG.search(s or "")
     return f"BR-{m[1]}/{m[2]}" if m else None
+
+
+def fold(s):
+    """Maiúsculas sem acento, para comparar nomes."""
+    return unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().upper()
 
 
 def num(s):
@@ -47,8 +56,8 @@ def num(s):
 def pick(row, names):
     low = {k.strip().lower(): v for k, v in row.items() if k}
     for n in names:
-        v = low.get(n.lower())
-        if v not in (None, ""):
+        v = (low.get(n.lower()) or "").strip()
+        if v and v not in TSE_NULL:
             return v
     return None
 
@@ -113,11 +122,16 @@ def enrich(polls, path, encoding, delimiter):
         if not row:
             print(f"[aviso] {p['r']} ({p['i']}, {p['d']}) não encontrado no arquivo do TSE", file=sys.stderr)
             continue
+        # Registro trocado (de outro instituto) não pode virar "confirmado".
+        empresa = " ".join(fold(row.get(c)) for c in TSE_COLS["empresa"] if row.get(c) not in (None, *TSE_NULL))
+        nomes = [w for w in re.split(r"[^A-Z0-9]+", fold(p["i"])) if len(w) >= 4]  # "Genial/Quaest" -> GENIAL, QUAEST
+        if empresa.strip() and nomes and not any(w in empresa for w in nomes):
+            print(f"[aviso] {p['r']} está registrado no TSE por {empresa.strip()[:60]}, não por {p['i']}; "
+                  "não confirmado", file=sys.stderr)
+            continue
         p["v"] = True
         if p["n"] is None and (n := num(pick(row, TSE_COLS["n"]))):
             p["n"] = int(n)
-        if p["m"] is None:
-            p["m"] = num(pick(row, TSE_COLS["margem"]))
         if p["c"] is None:
             p["c"] = pick(row, TSE_COLS["contratante"])
 

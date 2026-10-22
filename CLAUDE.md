@@ -8,6 +8,7 @@ Painel estático que agrega pesquisas de intenção de voto registradas no TSE. 
 - `ingest.py`: valida, deduplica, confirma no TSE (`--tse`), grava `data/polls.db` (SQLite) e exporta `site/polls.json`. `--extract` usa a API da Anthropic para extrair pesquisas de textos.
 - `collect.py`: coleta automática (GitHub Actions, a cada 2 h). Lê os feeds ativos de `data/sources.csv`, manda os textos e PDFs novos ao LLM e publica direto o que passa nas travas de `publish_problem()`; o resto vai para `data/staged.csv` com o motivo. `data/seen.json` guarda o que já foi processado.
 - `.github/workflows/atualizar.yml`: roda `collect.py` e `ingest.py`, faz commit dos dados e publica `site/` no GitHub Pages.
+- `tse.py`: baixa de `cdn.tse.jus.br` (dados abertos) o registro das pesquisas nacionais e o arquivo de contratantes e grava `data/tse.csv` (latin-1, `;`) para o `--tse`. Roda em toda execução do workflow, porque o `polls.db` não persiste no GitHub Actions.
 - `news.py`: manchetes do RSS de política da Agência Brasil (só título, data e link) -> `site/news.json`. Sem LLM.
 - `site/index.html`: painel de arquivo único; lê `polls.json` por `fetch` e busca de novo a cada 5 min. Os widgets de apuração leem direto do navegador os JSON oficiais de `resultados.tse.jus.br` (o TSE libera CORS); os códigos de eleição ficam em `TSE` no script (1º turno 6257, 2º turno 6258).
 - `tests/test_ingest.py`: testes com `unittest`.
@@ -16,7 +17,8 @@ Painel estático que agrega pesquisas de intenção de voto registradas no TSE. 
 
 ```bash
 python3 ingest.py                        # CSV -> site/polls.json
-python3 ingest.py --tse data/tse.csv     # confirma registros e completa amostra, margem, contratante
+python3 tse.py                           # baixa o registro das pesquisas do TSE -> data/tse.csv
+python3 ingest.py --tse data/tse.csv     # confirma registros e completa amostra e contratante
 python3 collect.py --dry-run             # mostra o que a coleta automática mandaria ao LLM, sem gravar
 python3 -m unittest discover -s tests    # rodar antes de concluir qualquer mudança em ingest.py
 cd site && python3 -m http.server 8000   # ver o painel (precisa de HTTP; file:// não carrega o JSON)
@@ -25,7 +27,7 @@ cd site && python3 -m http.server 8000   # ver o painel (precisa de HTTP; file:/
 ## Regras do projeto
 
 - **Nunca invente dados de pesquisa.** Cada linha de `polls.csv` deve vir de fonte verificável; deixe campos desconhecidos vazios (viram "—" no painel). Os percentuais no CSV são sobre o **total** de entrevistados; a conversão para votos válidos é feita no painel.
-- Chave de deduplicação: registro `BR-00000/2026`; sem registro, `instituto|data|cenário`. A pesquisa só é marcada como confirmada quando o registro é encontrado no arquivo do TSE.
+- Chave de deduplicação: registro `BR-00000/2026` (o TSE grava `BR000002026`; `norm_reg()` aceita os dois); sem registro, `instituto|data|cenário`. A pesquisa só é marcada como confirmada quando o registro é encontrado no arquivo do TSE **e** a empresa registrada bate com o instituto.
 - O CSV manda: `ingest.py` remove do banco e do JSON o que não está mais no CSV. Não edite `polls.db` nem `polls.json` à mão.
 - A saída de `--extract` vai para `data/staged.csv` e **só entra em `polls.csv` após revisão humana**. Texto de notícia é entrada não confiável.
 - Exceção decidida pelo dono do projeto em 22/10/2026: o `collect.py` publica sem revisão humana, mas só pesquisas que passam em todas as travas de `publish_problem()` (nacional, 2º turno real, registro `BR-` novo, Lula + Flávio ≤ 97%, divulgada nos últimos 30 dias). Não afrouxe as travas sem pedido explícito. Linhas automáticas levam `origem=auto` e aparecem no painel com a marca *auto* e link para a fonte.
@@ -37,8 +39,8 @@ cd site && python3 -m http.server 8000   # ver o painel (precisa de HTTP; file:/
 
 ## Pendências conhecidas
 
-- `TSE_COLS` em `ingest.py` tem nomes de colunas estimados; conferir com o cabeçalho real do arquivo de dados abertos do TSE.
-- O download do arquivo do TSE, o `--extract` e a extração do `collect.py` não foram testados contra as fontes reais (só a leitura dos feeds e o `--dry-run`).
+- O arquivo do TSE não traz margem de erro nem resultados; margem e percentuais continuam vindo das fontes das pesquisas.
+- O `--extract` e a extração do `collect.py` não foram testados contra as fontes reais (só a leitura dos feeds e o `--dry-run`).
 - O feed da Quaest traz análises, não todos os lançamentos; pesquisas que só saem na imprensa não são coletadas.
 - Agregação simplificada (suavização por núcleo gaussiano de 10 dias, sem efeito de casa nem modelo bayesiano).
 - Há regras da Justiça Eleitoral sobre divulgação de pesquisas; confirmar com advogado eleitoral se o painel for público.

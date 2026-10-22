@@ -1,0 +1,7 @@
+data/polls.db
+data/staged.csv
+data/tse.csv
+__pycache__/
+*.tmp
+.env
+.claude/settings.local.json

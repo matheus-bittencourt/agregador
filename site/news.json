@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-22T19:53:53+00:00",
+ "generated_at": "2026-10-22T23:09:14+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Primeiro turno contou com 43% mais eleitores de ao menos 70 anos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/primeiro-turno-contou-com-43-mais-eleitores-de-ao-menos-70-anos",
+   "d": "2026-10-22"
+  },
   {
    "t": "Campanha de Lula apresenta acordo com Flávio para abrir sigilos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-de-lula-apresenta-acordo-com-flavio-para-abrir-sigilos",
@@ -31,19 +36,14 @@
    "d": "2026-10-22"
   },
   {
-   "t": "TO: eleitores escolherão entre Professora Dorinha e Vicentinho Júnior",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-escolherao-entre-professora-dorinha-e-vicentinho-junior",
-   "d": "2026-10-22"
-  },
-  {
    "t": "RN: eleitores vão escolher entre Allyson e Cadu de Lula para governo",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/rn-eleitores-vao-escolher-entre-allyson-e-cadu-de-lula-para-governo",
    "d": "2026-10-22"
   },
   {
-   "t": "Flávio faz campanha em São Paulo; Lula teve ato em Belo Horizonte",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-faz-campanha-em-sao-paulo-lula-teve-ato-em-belo-horizonte",
-   "d": "2026-10-21"
+   "t": "TO: eleitores escolherão entre Professora Dorinha e Vicentinho Júnior",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-escolherao-entre-professora-dorinha-e-vicentinho-junior",
+   "d": "2026-10-22"
   }
  ]
 }

@@ -6,9 +6,9 @@
 <title>Agregador de pesquisas – Lula × Flávio, 2º turno 2026</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap">
 <style>
-:root{--bg:#f2f5f8;--fg:#14202b;--mut:#5d6b78;--sf:#fff;--bd:#d5dde5;--a:#d9730d;--b:#3b5bdb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171e;--fg:#e8eef4;--mut:#93a1ae;--sf:#18222b;--bd:#2b3946;--a:#f59f3a;--b:#7c93f5;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#10171e;--fg:#e8eef4;--mut:#93a1ae;--sf:#18222b;--bd:#2b3946;--a:#f59f3a;--b:#7c93f5;color-scheme:dark}
+:root{--bg:#f2f5f8;--fg:#14202b;--mut:#5d6b78;--sf:#fff;--bd:#d5dde5;--a:#d9730d;--b:#3b5bdb;--ok:#2b7a4b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171e;--fg:#e8eef4;--mut:#93a1ae;--sf:#18222b;--bd:#2b3946;--a:#f59f3a;--b:#7c93f5;--ok:#5cc28a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10171e;--fg:#e8eef4;--mut:#93a1ae;--sf:#18222b;--bd:#2b3946;--a:#f59f3a;--b:#7c93f5;--ok:#5cc28a;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -38,12 +38,60 @@ td.n,th.n{text-align:right}
 .note{color:var(--mut);font-size:.82rem;max-width:68ch;margin-top:22px}
 .note p{margin:0 0 8px}
 :focus-visible{outline:2px solid var(--b);outline-offset:2px}
+h2{font-size:1.15rem;font-weight:800;margin:0;letter-spacing:-.01em}
+.sec{margin:34px 0 12px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px;min-width:0}
+.card .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;margin-top:14px}
+select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:4px 8px}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--bd);margin:4px 0 12px}
+.bar i{display:block;height:100%}
+.cands{width:100%;min-width:0;font-size:.9rem;margin:0}
+.cands td{padding:5px 0;border-bottom:1px solid var(--bd)}
+.cands td.n{padding-left:12px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--mut);font-size:.82rem;margin-top:10px;font-variant-numeric:tabular-nums}
+.meta b{color:var(--fg);font-weight:600}
+.wait{color:var(--mut);margin:0}
+.err{color:var(--a);font-size:.85rem;margin:8px 0 0}
+.src{color:var(--mut);font-size:.78rem;margin:12px 0 0;line-height:1.7}
+.src a,.news a{color:inherit}
+.tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;border:1px solid currentColor;border-radius:4px;padding:0 5px;margin-right:6px;line-height:1.5;vertical-align:1px}
+.tag.of{color:var(--ok)}
+.tag.im{color:var(--b)}
+.tag.au{color:var(--a)}
+.tag.ep{color:var(--mut)}
+.eleito{color:var(--ok);font-weight:600;font-size:.78rem;margin-left:6px}
+.news{margin-top:28px}
+.news ul{list-style:none;margin:0;padding:0}
+.news li{padding:8px 0;border-bottom:1px solid var(--bd);font-size:.92rem}
+.news li:last-child{border:0}
+.news time{display:block;color:var(--mut);font-size:.78rem}
 </style>
 </head>
 <body>
 <main>
 <h1>Lula × Flávio Bolsonaro, 2º turno 2026</h1>
-<p class="sub">Pesquisas registradas no TSE, normalizadas e agregadas. Votação em 25/10.<br><span id="upd">Carregando…</span></p>
+<p class="sub">Apuração oficial do TSE e pesquisas registradas no TSE, normalizadas e agregadas. Votação em 25/10.</p>
+
+<section aria-labelledby="h-apu">
+<div class="card" id="apu-br" aria-live="polite">
+  <div class="hd"><h2 id="h-apu">Apuração do 2º turno · Brasil</h2></div>
+  <div class="body"><p class="wait">Consultando o TSE…</p></div>
+</div>
+<div class="grid">
+  <div class="card" id="apu-uf" aria-live="polite">
+    <div class="hd"><h2>2º turno por UF</h2><select id="uf" aria-label="Unidade da federação"></select></div>
+    <div class="body"><p class="wait">Escolha um estado.</p></div>
+  </div>
+  <div class="card" id="apu-t1">
+    <div class="hd"><h2>Resultado do 1º turno · Brasil</h2></div>
+    <div class="body"><p class="wait">Consultando o TSE…</p></div>
+  </div>
+</div>
+</section>
+
+<h2 class="sec">Pesquisas de intenção de voto</h2>
+<p class="sub"><span id="upd">Carregando…</span></p>
 
 <div class="big" id="big"></div>
 
@@ -60,6 +108,13 @@ td.n,th.n{text-align:right}
 <div class="tw"><table>
 <thead><tr><th>Divulgação</th><th>Instituto</th><th>Registro TSE</th><th>Cenário</th><th class="n">Amostra</th><th class="n">Lula</th><th class="n">Flávio</th><th class="n">Dif.</th></tr></thead>
 <tbody id="rows"></tbody></table></div>
+<p class="src"><span class="tag ep">Institutos</span>percentuais divulgados pelos institutos de pesquisa · <span class="tag of">Oficial · TSE</span>registro e confirmação no arquivo de pesquisas do TSE · <span class="tag au">auto</span>coletada por robô, sem revisão humana</p>
+
+<section class="card news" id="news" hidden>
+  <div class="hd"><h2>Manchetes da eleição</h2></div>
+  <ul></ul>
+  <p class="src"></p>
+</section>
 
 <div class="note">
 <p><b>Sobre os dados.</b> Não é um conjunto exaustivo. A cada 2 horas um robô verifica as publicações de Quaest e Paraná Pesquisas e acrescenta as pesquisas nacionais novas com registro no TSE; elas aparecem com a marca <i>auto</i>, que leva à fonte, porque foram extraídas automaticamente e não passaram por revisão humana. As demais foram incluídas à mão. “—” indica campo não localizado. Os dados vêm de <code>polls.json</code>, gerado por <code>ingest.py</code>; “não confirmado” significa que o registro ainda não foi cruzado com o arquivo do TSE.</p>
@@ -172,6 +227,97 @@ function load(first){
 }
 load(true);
 setInterval(load,5*60*1000);
+
+// ---- Apuração oficial: arquivos públicos do TSE (resultados.tse.jus.br), lidos direto pelo navegador ----
+// Os códigos mudam a cada pleito: confira em resultados.tse.jus.br/oficial/comum/config/ele-c.json
+var TSE={base:"https://resultados.tse.jus.br/oficial/ele2026",t1:"6257",t2:"6258",site:"https://resultados.tse.jus.br/"};
+var CLOSE=Date.parse("2026-10-25T20:00:00Z"); // 17h em Brasília: fim da votação
+var UFS=[["ac","Acre"],["al","Alagoas"],["ap","Amapá"],["am","Amazonas"],["ba","Bahia"],["ce","Ceará"],["df","Distrito Federal"],["es","Espírito Santo"],["go","Goiás"],["ma","Maranhão"],["mt","Mato Grosso"],["ms","Mato Grosso do Sul"],["mg","Minas Gerais"],["pa","Pará"],["pb","Paraíba"],["pr","Paraná"],["pe","Pernambuco"],["pi","Piauí"],["rj","Rio de Janeiro"],["rn","Rio Grande do Norte"],["rs","Rio Grande do Sul"],["ro","Rondônia"],["rr","Roraima"],["sc","Santa Catarina"],["sp","São Paulo"],["se","Sergipe"],["to","Tocantins"],["zz","Exterior"]];
+var COR={"13":CA,"22":CB};
+var pn=function(s){return parseFloat(String(s==null?"0":s).replace(",","."))||0};
+var nf=function(n){return Number(n||0).toLocaleString("pt-BR")};
+var pf=function(s){return esc(s||"0,00")+"%"};
+function tseUrl(ele,uf){return TSE.base+"/"+ele+"/dados/"+uf+"/"+uf+"-c0001-e"+("000000"+ele).slice(-6)+"-u.json"}
+
+function norm(d){
+  var c=[];
+  (d.carg&&d.carg[0]&&d.carg[0].agr||[]).forEach(function(g){(g.par||[]).forEach(function(p){(p.cand||[]).forEach(function(x){
+    c.push({n:x.n,nm:x.nmu||x.nm,v:+x.vap||0,p:x.pvap,pn:pn(x.pvap),st:x.e==="s"?(x.st==="2º turno"?"vai ao 2º turno":x.st||"eleito").toLowerCase():""});
+  })})});
+  c.sort(function(a,b){return b.v-a.v});
+  var s=d.s||{},v=d.v||{},e=d.e||{};
+  return {c:c,sec:pn(s.pst),secTxt:s.pst,fim:d.tf==="s",quando:(d.dt?d.dt+" "+d.ht:""),
+    comp:e.pc,abst:e.pa,brancos:v.pvb,nulos:v.ptvn,validos:v.vv};
+}
+
+function results(a,top){
+  var shown=top?a.c.slice(0,top):a.c,rest=a.c.slice(shown.length);
+  var bar=a.c.slice(0,2).map(function(x){return '<i style="width:'+x.pn+'%;background:'+(COR[x.n]||"var(--mut)")+'"></i>'}).join("");
+  var rows=shown.map(function(x){
+    return '<tr><td><i class="dot" style="background:'+(COR[x.n]||"var(--mut)")+'"></i>'+esc(x.nm)+(a.fim&&x.st?'<span class="eleito">'+esc(x.st)+"</span>":"")+
+      '</td><td class="n">'+nf(x.v)+'</td><td class="n"><b>'+pf(x.p)+"</b></td></tr>";
+  }).join("");
+  if(rest.length){
+    var rv=0,rp=0;rest.forEach(function(x){rv+=x.v;rp+=x.pn});
+    rows+='<tr><td>Outros '+rest.length+' candidatos</td><td class="n">'+nf(rv)+'</td><td class="n">'+f1(rp)+"%</td></tr>";
+  }
+  return '<div class="bar" aria-hidden="true">'+bar+'</div><table class="cands">'+rows+"</table>"+
+    '<div class="meta"><span>Seções totalizadas <b>'+pf(a.secTxt)+'</b></span><span>Comparecimento <b>'+pf(a.comp)+'</b></span><span>Abstenção <b>'+pf(a.abst)+'</b></span><span>Brancos <b>'+pf(a.brancos)+'</b></span><span>Nulos <b>'+pf(a.nulos)+"</b></span></div>"+
+    '<p class="meta">Percentuais sobre os votos válidos ('+nf(a.validos)+").</p>";
+}
+
+function srcLine(url,a){
+  return '<p class="src"><span class="tag of">Oficial · TSE</span><a href="'+esc(url)+'" target="_blank" rel="noopener">arquivo de resultados</a>'+
+    (a&&a.quando?" · totalizado em "+esc(a.quando):"")+(a&&a.fim?" · totalização encerrada":"")+
+    ' · <a href="'+TSE.site+'" target="_blank" rel="noopener">resultados.tse.jus.br</a></p>';
+}
+
+var LAST={};
+function apuracao(box,ele,uf,top){
+  var url=tseUrl(ele,uf),key=ele+uf,el=$(box+" .body");
+  return fetch(url,{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+    var a=norm(d);LAST[key]={a:a,at:new Date()};
+    if(!a.sec)el.innerHTML='<p class="wait">Aguardando o início da apuração. A votação termina às 17h (horário de Brasília) e o TSE divulga os números logo depois.</p>'+srcLine(url);
+    else el.innerHTML=results(a,top)+srcLine(url,a);
+    return a;
+  }).catch(function(){
+    var l=LAST[key],msg='<p class="err">Não foi possível consultar o TSE agora'+(l?"; mostrando a leitura das "+l.at.toLocaleTimeString("pt-BR",{timeStyle:"short"}):"")+'. Tente o site oficial.</p>';
+    el.innerHTML=(l&&l.a.sec?results(l.a,top):"")+msg+srcLine(url,l&&l.a);
+  });
+}
+
+var UF=null;
+try{UF=localStorage.getItem("uf")}catch(e){}
+$("#uf").innerHTML='<option value="">Escolha um estado</option>'+UFS.map(function(u){return '<option value="'+u[0]+'"'+(u[0]===UF?" selected":"")+">"+u[1]+"</option>"}).join("");
+$("#uf").addEventListener("change",function(e){
+  UF=e.target.value||null;try{UF?localStorage.setItem("uf",UF):localStorage.removeItem("uf")}catch(x){}
+  if(UF){$("#apu-uf .body").innerHTML='<p class="wait">Consultando o TSE…</p>';apuracao("#apu-uf",TSE.t2,UF)}
+  else $("#apu-uf .body").innerHTML='<p class="wait">Escolha um estado.</p>';
+});
+
+apuracao("#apu-t1",TSE.t1,"br",4);
+// 2º turno: a cada 60 s durante a apuração; a cada 10 min antes dela; para quando o TSE encerra a totalização.
+var FIM=false;
+function tick(){
+  if(document.hidden||FIM)return;
+  apuracao("#apu-br",TSE.t2,"br").then(function(a){if(a&&a.fim)FIM=true});
+  if(UF)apuracao("#apu-uf",TSE.t2,UF);
+}
+tick();
+setInterval(function(){if(Date.now()>=CLOSE-30*60*1000||new Date().getMinutes()%10===0)tick()},60*1000);
+document.addEventListener("visibilitychange",function(){if(!document.hidden)tick()});
+
+// ---- Manchetes: site/news.json, gerado por news.py a partir do RSS da Agência Brasil ----
+fetch("news.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+  if(!j.itens||!j.itens.length)return;
+  var safe=function(u){return /^https:\/\//.test(u||"")?u:"#"};
+  $("#news ul").innerHTML=j.itens.map(function(i){
+    return '<li><a href="'+esc(safe(i.u))+'" target="_blank" rel="noopener">'+esc(i.t)+"</a>"+(i.d?"<time>"+fd(i.d)+"</time>":"")+"</li>";
+  }).join("");
+  var g=new Date(j.generated_at);
+  $("#news .src").innerHTML='<span class="tag im">Imprensa pública</span><a href="'+esc(safe(j.fonte&&j.fonte.url))+'" target="_blank" rel="noopener">'+esc(j.fonte&&j.fonte.nome)+"</a> · RSS de política, filtrado por termos da eleição · atualizado em "+g.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"})+" (a cada 2 h)";
+  $("#news").hidden=false;
+}).catch(function(){});
 </script>
 </body>
 </html>

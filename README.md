@@ -5,6 +5,7 @@ data/polls.csv   pesquisas curadas (fonte de verdade editável)
 data/tse.csv     arquivo de registros do TSE (você baixa; ver abaixo)
 ingest.py        valida, deduplica, confirma no TSE, grava SQLite e exporta JSON
 collect.py       coleta automática a cada 2 h (fontes em data/sources.csv)
+news.py          manchetes da Agência Brasil -> site/news.json
 site/index.html  painel (lê polls.json)
 site/polls.json  gerado pelo ingest.py
 ```
@@ -56,6 +57,14 @@ O painel busca `polls.json` de novo a cada 5 minutos. Pesquisas automáticas apa
 Para ativar: envie o repositório ao GitHub, crie o segredo `ANTHROPIC_API_KEY` em *Settings → Secrets and variables → Actions* e, em *Settings → Pages*, escolha a origem "GitHub Actions". Para testar a coleta sem gastar API: `python3 collect.py --dry-run`.
 
 As fontes e a conferência de `robots.txt` e termos de uso ficam em `data/sources.csv`. O `collect.py` ainda checa o `robots.txt` a cada rodada, inclusive as regras para `ClaudeBot` e `anthropic-ai`.
+
+## Apuração e manchetes
+
+O painel mostra três quadros de apuração com dados oficiais do TSE: 2º turno no Brasil, 2º turno por UF (o visitante escolhe o estado) e o resultado do 1º turno. Eles leem direto do navegador os arquivos públicos de `resultados.tse.jus.br` (o mesmo que alimenta o app Resultados), sem passar pelo GitHub Actions. O 2º turno é consultado a cada 10 minutos antes do fim da votação e a cada minuto a partir das 16h30 de 25/10, só com a aba visível, e para quando o TSE encerra a totalização. Se o TSE não responder, o quadro mantém a última leitura e avisa.
+
+Os códigos das eleições (`6257` e `6258`) ficam no objeto `TSE` do script; para outro pleito, confira em `resultados.tse.jus.br/oficial/comum/config/ele-c.json`.
+
+O quadro de manchetes vem do RSS de política da Agência Brasil, filtrado por termos da eleição. Só título, data e link são mostrados, porque a EBC reserva os direitos do texto. O site do TSE bloqueia leitura automatizada, então as notícias do próprio TSE não entram.
 
 ## Limitações
 

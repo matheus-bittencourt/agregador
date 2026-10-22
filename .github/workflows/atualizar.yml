@@ -1,4 +1,4 @@
-# A cada 2 h: coleta pesquisas novas, regenera site/polls.json, salva no repositório e publica site/ no GitHub Pages.
+# A cada 2 h: coleta pesquisas novas e manchetes, regenera site/polls.json, salva no repositório e publica site/ no GitHub Pages.
 # Também publica a cada push no main (edições à mão no polls.csv), sem coletar.
 # Requer o segredo ANTHROPIC_API_KEY e, em Settings > Pages, a origem "GitHub Actions".
 name: Atualizar e publicar
@@ -31,16 +31,20 @@ jobs:
       - run: python -m unittest discover -s tests
       - name: Coletar pesquisas novas
         if: github.event_name != 'push'
+        continue-on-error: true  # sem chave ou com a API fora, ainda publica manchetes e apuração
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LLM_MODELS: claude-sonnet-5-5,claude-haiku-5-5
         run: python collect.py
+      - name: Manchetes da Agência Brasil
+        if: github.event_name != 'push'
+        run: python news.py || echo "Feed indisponível; mantém o news.json anterior."
       - run: python ingest.py
       - name: Salvar dados no repositório
         if: github.event_name != 'push'
         run: |
           git add -A data site
-          if git diff --cached --quiet -- data; then echo "Nada novo nas fontes."; exit 0; fi
+          if git diff --cached --quiet -- data site/news.json; then echo "Nada novo nas fontes."; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git commit -m "Atualização automática das pesquisas"

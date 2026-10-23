@@ -63,6 +63,7 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 .eleito{color:var(--ok);font-weight:600;font-size:.78rem;margin-left:6px}
 .news,.wiki{margin-top:28px}
 .wiki .tw{margin-top:10px}
+.wiki td small{color:var(--mut);font-size:.8rem;margin-left:4px}
 .more{font:inherit;font-size:.85rem;color:var(--b);background:none;border:1px solid var(--bd);border-radius:6px;padding:4px 10px;margin-top:10px;cursor:pointer}
 .wiki .big b{font-size:clamp(1.6rem,5vw,2.2rem)}
 .news ul{list-style:none;margin:0;padding:0}
@@ -117,8 +118,9 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
   <div class="hd"><h2>Outras pesquisas na imprensa</h2></div>
   <div class="big" id="wbig"></div>
   <p class="meta" id="wmeta"></p>
+  <p class="meta">Na tabela: % sobre o total de entrevistados; entre parênteses, % dos votos válidos (sem brancos, nulos e indecisos), o número que costuma sair nas manchetes. Em negrito, quem lidera em cada pesquisa.</p>
   <div class="tw"><table>
-  <thead><tr><th>Campo até</th><th>Instituto</th><th class="n">Amostra</th><th class="n">Margem</th><th class="n">Lula</th><th class="n">Flávio</th><th class="n">Dif.</th><th>Fonte</th></tr></thead>
+  <thead><tr><th>Campo até</th><th>Instituto</th><th class="n">Amostra</th><th class="n">Margem</th><th class="n">Lula</th><th class="n">Flávio</th><th class="n">Dif. válidos</th><th>Fonte</th></tr></thead>
   <tbody></tbody></table></div>
   <button type="button" class="more" id="wmore" hidden></button>
   <p class="src"></p>
@@ -218,7 +220,7 @@ function render(){
 }
 
 $("#inst").addEventListener("change",function(e){st.off[e.target.getAttribute("data-i")]=!e.target.checked;render()});
-$("#valid").addEventListener("change",function(e){st.valid=e.target.checked;render();renderWiki()});
+$("#valid").addEventListener("change",function(e){st.valid=e.target.checked;render()});
 $("#sim").addEventListener("change",function(e){st.sim=e.target.checked;render()});
 
 function boot(j){
@@ -327,23 +329,24 @@ var WK=null,WALL=false,WMAX=12;
 function renderWiki(){
   if(!WK||!WK.itens||!WK.itens.length)return;
   var safe=function(u){return /^https:\/\//.test(u||"")?u:"#"};
-  var vl=function(o,k){return st.valid?o[k]/(o.l+o.f)*100:o[k]};
+  var vv=function(o,k){return o[k]/(o.l+o.f)*100};
   // Média simples da pesquisa mais recente de cada instituto com campo nos últimos 7 dias.
   var top=T(WK.itens[0].d),seen={},last=WK.itens.filter(function(o){
     if(seen[o.i]||top-T(o.d)>7*DAY)return false;seen[o.i]=1;return true});
-  var ml=0,mf=0;last.forEach(function(o){ml+=vl(o,"l");mf+=vl(o,"f")});ml/=last.length;mf/=last.length;
+  var ml=0,mf=0,ll=0;last.forEach(function(o){ml+=vv(o,"l");mf+=vv(o,"f");if(o.l>o.f)ll++});ml/=last.length;mf/=last.length;
   var df=mf-ml;
-  $("#wbig").innerHTML='<div><b style="color:'+CA+'">'+f1(ml)+'%</b><span><i class="dot" style="background:'+CA+'"></i>Lula, média</span></div>'+
-    '<div><b style="color:'+CB+'">'+f1(mf)+'%</b><span><i class="dot" style="background:'+CB+'"></i>Flávio Bolsonaro, média</span></div>'+
+  $("#wbig").innerHTML='<div><b style="color:'+CA+'">'+f1(ml)+'%</b><span><i class="dot" style="background:'+CA+'"></i>Lula, média dos válidos</span></div>'+
+    '<div><b style="color:'+CB+'">'+f1(mf)+'%</b><span><i class="dot" style="background:'+CB+'"></i>Flávio Bolsonaro, média dos válidos</span></div>'+
     '<div><b>'+(df>=0?"+":"−")+f1(Math.abs(df))+'</b><span>pontos, '+(df>=0?"Flávio":"Lula")+" à frente</span></div>";
-  $("#wmeta").textContent="Média simples da pesquisa mais recente de "+last.length+" institutos com campo encerrado até 7 dias antes da última ("+fd(WK.itens[0].d)+"), "+(st.valid?"em votos válidos":"sobre o total")+". Não entra na tendência acima.";
+  $("#wmeta").textContent="Média simples da pesquisa mais recente de "+last.length+" institutos com campo encerrado até 7 dias antes da última ("+fd(WK.itens[0].d)+"), em votos válidos. Lula lidera em "+ll+" delas, Flávio em "+last.filter(function(o){return o.f>o.l}).length+". Não entra na tendência acima.";
   var rows=WALL?WK.itens:WK.itens.slice(0,WMAX);
   $("#wmore").hidden=WK.itens.length<=WMAX;
   $("#wmore").textContent=WALL?"Mostrar só as "+WMAX+" mais recentes":"Mostrar todas ("+WK.itens.length+")";
   $("#wiki tbody").innerHTML=rows.map(function(o){
-    var a=vl(o,"l"),b=vl(o,"f"),d=b-a;
+    var a=vv(o,"l"),b=vv(o,"f"),d=b-a;
+    var cell=function(k,v){var lead=o[k]>o[k==="l"?"f":"l"];return '<td class="n">'+(lead?"<b>":"")+f1(o[k])+"<small>("+f1(v)+")</small>"+(lead?"</b>":"")+"</td>"};
     return "<tr><td>"+fd(o.d)+"</td><td>"+esc(o.i)+'</td><td class="n">'+(o.n?o.n.toLocaleString("pt-BR"):"—")+'</td><td class="n">'+(o.m!=null?"±"+esc(String(o.m).replace(".",",")):"—")+
-      '</td><td class="n">'+f1(a)+'</td><td class="n">'+f1(b)+'</td><td class="n">'+(d>=0?"+":"−")+f1(Math.abs(d))+
+      "</td>"+cell("l",a)+cell("f",b)+'<td class="n">'+(d>=0?"Flávio +":"Lula +")+f1(Math.abs(d))+
       '</td><td><a href="'+esc(safe(o.u))+'" target="_blank" rel="noopener noreferrer">matéria</a></td></tr>';
   }).join("");
   var g=new Date(WK.generated_at),f=WK.fonte||{};

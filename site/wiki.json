@@ -1,12 +1,23 @@
 {
- "generated_at": "2026-10-23T04:17:44+00:00",
+ "generated_at": "2026-10-23T21:16:27+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381532828"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381643106"
  },
  "itens": [
+  {
+   "i": "Ipespe",
+   "p": "20–22 Oct",
+   "d": "2026-10-22",
+   "l": 47.0,
+   "f": 48.0,
+   "o": 5.0,
+   "m": 2.6,
+   "n": 1500,
+   "u": "https://www.cnnbrasil.com.br/eleicoes/ipespe-abrapel-flavio-tem-505-dos-votos-validos-lula-495/"
+  },
   {
    "i": "Vox Brasil",
    "p": "20–22 Oct",
@@ -28,6 +39,50 @@
    "m": 2.0,
    "n": 2520,
    "u": "https://www1.folha.uol.com.br/poder/2026/10/datafolha-flavio-bolsonaro-e-lula-empatam-com-50-dos-votos-validos-cada.shtml"
+  },
+  {
+   "i": "Alfa",
+   "p": "19–22 Oct",
+   "d": "2026-10-22",
+   "l": 46.0,
+   "f": 49.9,
+   "o": 4.1,
+   "m": 1.9,
+   "n": 2700,
+   "u": "https://www.cnnbrasil.com.br/eleicoes/alfa-flavio-tem-52-dos-votos-validos-no-2o-turno-lula-48/?utm_source=social&utm_medium=twitter-feed&utm_campaign=politica-cnn-brasil&utm_content=link"
+  },
+  {
+   "i": "Real Time",
+   "p": "19–22 Oct",
+   "d": "2026-10-22",
+   "l": 45.0,
+   "f": 49.0,
+   "o": 6.0,
+   "m": 2.0,
+   "n": 2000,
+   "u": "https://www.riotimesonline.com/real-time-big-data-poll-flavio-52-lula-48-oct-23-runoff-2026/"
+  },
+  {
+   "i": "Veritá",
+   "p": "18–22 Oct",
+   "d": "2026-10-22",
+   "l": 47.5,
+   "f": 50.2,
+   "o": 2.3,
+   "m": 1.0,
+   "n": 15554,
+   "u": "https://exame.com/brasil/pesquisa-verita-flavio-bolsonaro-tem-513-e-lula-487-dos-votos-validos/"
+  },
+  {
+   "i": "Datatrends",
+   "p": "19–21 Oct",
+   "d": "2026-10-21",
+   "l": 46.0,
+   "f": 50.0,
+   "o": 4.0,
+   "m": 2.19,
+   "n": 2000,
+   "u": "https://www.riotimesonline.com/datatrends-poll-flavio-51-9-lula-48-1-runoff-2026/"
   },
   {
    "i": "Indexa",

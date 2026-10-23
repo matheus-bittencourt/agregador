@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-10-23T16:51:06+00:00",
+ "generated_at": "2026-10-23T21:15:58+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Segundo turno: acesso à Esplanada será controlado no domingo",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/segundo-turno-acesso-esplanada-sera-controlado-no-domingo",
+   "d": "2026-10-23"
+  },
+  {
+   "t": "Barra do Corda afasta secretário por ameaça a eleitores do PT",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/barra-do-corda-afasta-secretario-por-ameaca-eleitores-do-pt",
+   "d": "2026-10-23"
+  },
   {
    "t": "ONS fará operação especial para garantir energia no segundo turno",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ons-fara-operacao-especial-para-garantir-energia-no-segundo-turno",
@@ -34,16 +44,6 @@
    "t": "Primeiro governador, depois presidente: saiba qual a ordem de votação",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/primeiro-governador-depois-presidente-saiba-qual-ordem-de-votacao",
    "d": "2026-10-23"
-  },
-  {
-   "t": "Eleitor que pediu voto em trânsito pode consultar local no e-Título",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitor-que-pediu-voto-em-transito-pode-consultar-local-no-e-titulo",
-   "d": "2026-10-23"
-  },
-  {
-   "t": "Lula participa de live do “exército” e estimula ida de idosos às urnas",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-participa-de-live-do-exercito-e-estimula-ida-de-idosos-urnas",
-   "d": "2026-10-22"
   }
  ]
 }

@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-22T23:09:14+00:00",
+ "generated_at": "2026-10-23T04:17:43+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula participa de live do “exército” e estimula ida de idosos às urnas",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-participa-de-live-do-exercito-e-estimula-ida-de-idosos-urnas",
+   "d": "2026-10-22"
+  },
   {
    "t": "Primeiro turno contou com 43% mais eleitores de ao menos 70 anos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/primeiro-turno-contou-com-43-mais-eleitores-de-ao-menos-70-anos",
@@ -31,18 +36,13 @@
    "d": "2026-10-22"
   },
   {
-   "t": "Eleitores do ES definem disputa para governo entre Ferraço e Pazolini",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-do-es-definem-disputa-para-governo-entre-ferraco-e-pazolini",
-   "d": "2026-10-22"
-  },
-  {
-   "t": "RN: eleitores vão escolher entre Allyson e Cadu de Lula para governo",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/rn-eleitores-vao-escolher-entre-allyson-e-cadu-de-lula-para-governo",
-   "d": "2026-10-22"
-  },
-  {
    "t": "TO: eleitores escolherão entre Professora Dorinha e Vicentinho Júnior",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-escolherao-entre-professora-dorinha-e-vicentinho-junior",
+   "d": "2026-10-22"
+  },
+  {
+   "t": "Eleitores do ES definem disputa para governo entre Ferraço e Pazolini",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-do-es-definem-disputa-para-governo-entre-ferraco-e-pazolini",
    "d": "2026-10-22"
   }
  ]

@@ -1,12 +1,23 @@
 {
- "generated_at": "2026-10-22T23:42:25+00:00",
+ "generated_at": "2026-10-23T04:17:44+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381496003"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381532828"
  },
  "itens": [
+  {
+   "i": "Vox Brasil",
+   "p": "20–22 Oct",
+   "d": "2026-10-22",
+   "l": 45.4,
+   "f": 44.3,
+   "o": 10.3,
+   "m": 2.15,
+   "n": 2100,
+   "u": "https://www.cnnbrasil.com.br/eleicoes/vox-lula-tem-506-dos-votos-validos-no-2o-turno-flavio-494/"
+  },
   {
    "i": "Datafolha",
    "p": "20–22 Oct",

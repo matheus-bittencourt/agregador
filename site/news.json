@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-24T00:25:27+00:00",
+ "generated_at": "2026-10-24T12:34:03+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Saiba como votar usando o aplicativo e-Título do TSE",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/saiba-como-votar-usando-o-aplicativo-e-titulo-do-tse",
+   "d": "2026-10-24"
+  },
   {
    "t": "Sociedade civil manifesta preocupação ao TSE por censura nas redes",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sociedade-civil-manifesta-preocupacao-ao-tse-por-censura-nas-redes",
@@ -38,11 +43,6 @@
   {
    "t": "Flávio propõe retomada de privatizações; Lula quer fortalecer empresas",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-propoe-retomada-de-privatizacoes-lula-quer-fortalecer-empresas",
-   "d": "2026-10-23"
-  },
-  {
-   "t": "Confira a agenda dos presidenciáveis nesta sexta-feira (23)",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-sexta-feira-23",
    "d": "2026-10-23"
   }
  ]

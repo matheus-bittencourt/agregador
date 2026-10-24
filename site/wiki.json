@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-24T17:18:27+00:00",
+ "generated_at": "2026-10-24T20:32:24+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381763652"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381781423"
  },
  "itens": [
   {
@@ -17,6 +17,17 @@
    "m": 2.2,
    "n": 2032,
    "u": "https://www.reuters.com/world/americas/flavio-bolsonaro-lula-about-even-ahead-brazil-election-runoff-cntmda-poll-shows-2026-10-24/"
+  },
+  {
+   "i": "Instituto França",
+   "p": "21–23 Oct",
+   "d": "2026-10-23",
+   "l": 43.1,
+   "f": 45.1,
+   "o": 11.3,
+   "m": 2.5,
+   "n": 1537,
+   "u": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-514-contra-486-de-lula-em-votos-validos-diz-pesquisa/?utm_source=chatgpt.com"
   },
   {
    "i": "Ipespe",

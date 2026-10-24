@@ -1,12 +1,23 @@
 {
- "generated_at": "2026-10-24T00:25:28+00:00",
+ "generated_at": "2026-10-24T17:18:27+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381653657"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381763652"
  },
  "itens": [
+  {
+   "i": "MDA",
+   "p": "21–23 Oct",
+   "d": "2026-10-23",
+   "l": 45.0,
+   "f": 46.3,
+   "o": 8.7,
+   "m": 2.2,
+   "n": 2032,
+   "u": "https://www.reuters.com/world/americas/flavio-bolsonaro-lula-about-even-ahead-brazil-election-runoff-cntmda-poll-shows-2026-10-24/"
+  },
   {
    "i": "Ipespe",
    "p": "20–22 Oct",

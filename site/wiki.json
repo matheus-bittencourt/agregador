@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T21:16:27+00:00",
+ "generated_at": "2026-10-24T00:25:28+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381643106"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381653657"
  },
  "itens": [
   {
@@ -74,17 +74,6 @@
    "u": "https://exame.com/brasil/pesquisa-verita-flavio-bolsonaro-tem-513-e-lula-487-dos-votos-validos/"
   },
   {
-   "i": "Datatrends",
-   "p": "19–21 Oct",
-   "d": "2026-10-21",
-   "l": 46.0,
-   "f": 50.0,
-   "o": 4.0,
-   "m": 2.19,
-   "n": 2000,
-   "u": "https://www.riotimesonline.com/datatrends-poll-flavio-51-9-lula-48-1-runoff-2026/"
-  },
-  {
    "i": "Indexa",
    "p": "20–21 Oct",
    "d": "2026-10-21",
@@ -94,6 +83,17 @@
    "m": 2.2,
    "n": 2000,
    "u": "https://www.cnnbrasil.com.br/eleicoes/indexa-broadcast-flavio-tem-506-dos-votos-validos-lula-494/"
+  },
+  {
+   "i": "Datatrends",
+   "p": "19–21 Oct",
+   "d": "2026-10-21",
+   "l": 46.0,
+   "f": 50.0,
+   "o": 4.0,
+   "m": 2.19,
+   "n": 2000,
+   "u": "https://www.riotimesonline.com/datatrends-poll-flavio-51-9-lula-48-1-runoff-2026/"
   },
   {
    "i": "PoderData",

@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-23T21:15:58+00:00",
+ "generated_at": "2026-10-24T00:25:27+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Sociedade civil manifesta preocupação ao TSE por censura nas redes",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/sociedade-civil-manifesta-preocupacao-ao-tse-por-censura-nas-redes",
+   "d": "2026-10-23"
+  },
   {
    "t": "Segundo turno: acesso à Esplanada será controlado no domingo",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/segundo-turno-acesso-esplanada-sera-controlado-no-domingo",
@@ -38,11 +43,6 @@
   {
    "t": "Confira a agenda dos presidenciáveis nesta sexta-feira (23)",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-nesta-sexta-feira-23",
-   "d": "2026-10-23"
-  },
-  {
-   "t": "Primeiro governador, depois presidente: saiba qual a ordem de votação",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/primeiro-governador-depois-presidente-saiba-qual-ordem-de-votacao",
    "d": "2026-10-23"
   }
  ]

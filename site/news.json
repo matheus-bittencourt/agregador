@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-10-25T11:49:51+00:00",
+ "generated_at": "2026-10-25T13:06:49+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "TSE agiliza aprovação de transporte para indígenas e quilombolas",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/tse-agiliza-aprovacao-de-transporte-para-indigenas-e-quilombolas",
+   "d": "2026-10-25"
+  },
+  {
+   "t": "Ao votar no Rio de Janeiro, Flávio diz que representa a mudança",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ao-votar-no-rio-de-janeiro-flavio-diz-que-representa-mudanca",
+   "d": "2026-10-25"
+  },
   {
    "t": "Saiba quais as condutas consideradas crime eleitoral no dia da votação",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/saiba-quais-condutas-consideradas-crime-eleitoral-no-dia-da-votacao",
@@ -34,16 +44,6 @@
    "t": "Eleitores vão às urnas hoje para escolher o presidente do país",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleitores-vao-urnas-neste-domingo-para-escolher-o-presidente-do-pais",
    "d": "2026-10-25"
-  },
-  {
-   "t": "Nunes Marques pede vigilância e senso crítico com notícias no 2º turno",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-pede-vigilancia-e-senso-critico-com-noticias-no-2o-turno",
-   "d": "2026-10-24"
-  },
-  {
-   "t": "Em Brasília, atos por Lula e Flávio ficam a 2 km de distância",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-brasilia-atos-por-lula-e-flavio-ficam-2-km-de-distancia",
-   "d": "2026-10-24"
   }
  ]
 }

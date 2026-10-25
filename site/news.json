@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-25T00:09:32+00:00",
+ "generated_at": "2026-10-25T03:07:45+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Nunes Marques pede vigilância e senso crítico com notícias no 2º turno",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/nunes-marques-pede-vigilancia-e-senso-critico-com-noticias-no-2o-turno",
+   "d": "2026-10-24"
+  },
   {
    "t": "Em Brasília, atos por Lula e Flávio ficam a 2 km de distância",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-brasilia-atos-por-lula-e-flavio-ficam-2-km-de-distancia",
@@ -38,11 +43,6 @@
   {
    "t": "Eleições 2026: saiba o que caracteriza o crime de boca de urna",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/eleicoes-2026-saiba-o-que-caracteriza-o-crime-de-boca-de-urna",
-   "d": "2026-10-24"
-  },
-  {
-   "t": "Confira a agenda dos presidenciáveis neste sábado (24)",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/confira-agenda-dos-presidenciaveis-neste-sabado-25",
    "d": "2026-10-24"
   }
  ]

@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-10-25T03:19:01+00:00",
+  "observacao": "Curado à mão a partir das matérias. Percentuais do cenário espontâneo (nomes não apresentados ao entrevistado), sobre o total de entrevistados. bn = brancos/nulos, nd = indecisos, o = outros; null = não informado.",
+  "itens": [
+    {"d": "2026-10-24", "i": "Datafolha", "r": "BR-09540/2026", "n": 4050, "m": 2, "l": 45, "f": 47, "bn": 3, "nd": 4, "o": 1,
+     "u": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-vespera-segundo-turno/"},
+    {"d": "2026-10-24", "i": "Futura/100% Cidades", "r": "BR-09726/2026", "n": 2000, "m": 2.2, "l": 46.6, "f": 46.1, "bn": 2.3, "nd": 3.7, "o": 1.2,
+     "u": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/futura-inteligencia-presidente-outubro-2026-vespera-segundo-turno/"},
+    {"d": "2026-10-21", "i": "Gerp", "r": "BR-03835/2026", "n": 2400, "m": 2, "l": 43, "f": 48, "bn": null, "nd": 8, "o": 1,
+     "u": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-3/"}
+  ]
+}

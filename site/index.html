@@ -66,6 +66,21 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 .wiki td small{color:var(--mut);font-size:.8rem;margin-left:4px}
 .more{font:inherit;font-size:.85rem;color:var(--b);background:none;border:1px solid var(--bd);border-radius:6px;padding:4px 10px;margin-top:10px;cursor:pointer}
 .wiki .big b{font-size:clamp(1.6rem,5vw,2.2rem)}
+.esp{margin-top:28px}
+.esp .it{padding:12px 0;border-bottom:1px solid var(--bd)}
+.esp .it:last-of-type{border-bottom:0}
+.esp .ih{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;font-size:.92rem}
+.esp .ih small{color:var(--mut);font-size:.8rem}
+.esp .bar{margin:6px 0 6px}
+.esp .bar .sl{background:var(--a)}
+.esp .bar .sf{background:var(--b)}
+.esp .bar .s1,.esp .bar .s2,.esp .bar .s3{background:var(--mut)}
+.esp .bar .s1{opacity:.65}
+.esp .bar .s2{opacity:.4}
+.esp .bar .s3{opacity:.2}
+.esp .leg{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:.85rem;font-variant-numeric:tabular-nums}
+.esp .leg span{color:var(--mut)}
+.esp .leg b{color:var(--fg);font-weight:600}
 .news ul{list-style:none;margin:0;padding:0}
 .news li{padding:8px 0;border-bottom:1px solid var(--bd);font-size:.92rem}
 .news li:last-child{border:0}
@@ -113,6 +128,13 @@ select{font:inherit;font-size:.9rem;color:var(--fg);background:var(--bg);border:
 <thead><tr><th>Divulgação</th><th>Instituto</th><th>Registro TSE</th><th>Cenário</th><th class="n">Amostra</th><th class="n">Lula</th><th class="n">Flávio</th><th class="n">Dif.</th></tr></thead>
 <tbody id="rows"></tbody></table></div>
 <p class="src"><span class="tag ep">Institutos</span>percentuais divulgados pelos institutos de pesquisa · <span class="tag of">Oficial · TSE</span>registro e confirmação no arquivo de pesquisas do TSE · <span class="tag au">auto</span>coletada por robô, sem revisão humana</p>
+
+<section class="card esp" id="esp" hidden>
+  <div class="hd"><h2>Voto espontâneo · 2º turno</h2></div>
+  <p class="wait" style="font-size:.85rem;margin-bottom:6px">Cenário em que os nomes dos candidatos <b>não</b> são apresentados ao entrevistado. % sobre o total de entrevistados, sem exclusão de brancos, nulos e indecisos. Poucas pesquisas medem isso, então não há série no tempo: são os levantamentos mais recentes que encontrei. Fora do gráfico e da tendência acima.</p>
+  <div id="espit"></div>
+  <p class="src"></p>
+</section>
 
 <section class="card wiki" id="wiki" hidden>
   <div class="hd"><h2>Outras pesquisas na imprensa</h2></div>
@@ -322,6 +344,26 @@ function tick(){
 tick();
 setInterval(function(){if(Date.now()>=CLOSE-30*60*1000||new Date().getMinutes()%10===0)tick()},60*1000);
 document.addEventListener("visibilitychange",function(){if(!document.hidden)tick()});
+
+// ---- Voto espontâneo: site/espontanea.json, curado à mão a partir das matérias (cada linha leva à fonte) ----
+fetch("espontanea.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+  if(!j.itens||!j.itens.length)return;
+  var safe=function(u){return /^https:\/\//.test(u||"")?u:"#"};
+  var nf=function(x){return String(Math.round(Number(x)*10)/10).replace(".",",")};
+  var seg=function(c,v,t){v=Number(v);return v>0&&isFinite(v)?'<i class="'+c+'" style="width:'+Math.min(v,100)+'%" title="'+t+" "+nf(v)+'%"></i>':""};
+  var part=function(l,v,k){return v==null?"":'<span>'+l+' <b>'+nf(v)+'%</b></span>'};
+  $("#espit").innerHTML=j.itens.map(function(o){
+    var d=Number(o.f)-Number(o.l);
+    return '<div class="it"><div class="ih"><b>'+esc(o.i)+'</b><small>'+fd(o.d)+" · "+(o.n?Number(o.n).toLocaleString("pt-BR")+" entrevistados":"")+(o.m!=null?" · ±"+esc(String(o.m).replace(".",",")):"")+
+      " · "+esc(o.r)+' · <a href="'+esc(safe(o.u))+'" target="_blank" rel="noopener noreferrer">matéria</a></small></div>'+
+      '<div class="bar" role="img" aria-label="'+esc(o.i)+": Lula "+nf(o.l)+"%, Flávio "+nf(o.f)+'%">'+seg("sl",o.l,"Lula")+seg("sf",o.f,"Flávio")+seg("s1",o.bn,"Brancos/nulos")+seg("s2",o.nd,"Indecisos")+seg("s3",o.o,"Outros")+"</div>"+
+      '<div class="leg"><span><i class="dot" style="background:'+CA+'"></i>Lula <b>'+nf(o.l)+'%</b></span><span><i class="dot" style="background:'+CB+'"></i>Flávio <b>'+nf(o.f)+"%</b></span>"+
+      part("Brancos/nulos",o.bn)+part("Indecisos",o.nd)+part("Outros",o.o)+"<span>"+(d>=0?"Flávio +":"Lula +")+nf(Math.abs(d))+" pt</span></div></div>";
+  }).join("");
+  var g=new Date(j.generated_at);
+  $("#esp .src").innerHTML='<span class="tag ep">Institutos</span>percentuais divulgados pelos institutos e publicados na imprensa; transcritos à mão · não conferidos no registro do TSE · atualizado em '+g.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"});
+  $("#esp").hidden=false;
+}).catch(function(){});
 
 // ---- Outras pesquisas: site/wiki.json, gerado por wiki.py a partir da tabela da Wikipédia ----
 // Fonte secundária, fora do gráfico e da tendência (sem registro do TSE); cada linha leva à matéria citada.

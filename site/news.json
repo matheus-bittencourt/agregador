@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-10-26T07:39:15+00:00",
+ "generated_at": "2026-10-26T15:03:32+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Plebiscito: eleitores de 6 cidades decidem transferência de distritos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/plebiscito-eleitores-de-6-cidades-decidem-transferencia-de-distritos",
+   "d": "2026-10-26"
+  },
+  {
+   "t": "Em festa da vitória, Lula pede que público cante Hino da Independência",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-festa-da-vitoria-lula-pede-que-publico-cante-hino-da-independencia",
+   "d": "2026-10-26"
+  },
   {
    "t": "Lula agradece votos e diz que teve de vencer intromissão vinda de fora",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-agradece-votos-e-diz-que-teve-de-vencer-intromissao-vinda-de-fora",
@@ -33,16 +43,6 @@
   {
    "t": "Imprensa internacional destaca vitória histórica de Lula",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/imprensa-internacional-destaca-vitoria-historica-de-lula",
-   "d": "2026-10-25"
-  },
-  {
-   "t": "Prorrogação da votação teve baixa procura e frustração de eleitores",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/prorrogacao-da-votacao-teve-baixa-procura-e-frustracao-de-eleitores",
-   "d": "2026-10-25"
-  },
-  {
-   "t": "Rio Grande do Norte elege Cadu de Lula governador do estado",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/rio-grande-do-norte-elege-cadu-de-lula-governador-do-estado",
    "d": "2026-10-25"
   }
  ]

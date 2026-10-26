@@ -1,12 +1,23 @@
 {
- "generated_at": "2026-10-25T07:29:11+00:00",
+ "generated_at": "2026-10-26T07:39:17+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1381856038"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1382044705"
  },
  "itens": [
+  {
+   "i": "Results",
+   "p": "25 Oct",
+   "d": "2026-10-25",
+   "l": 51.79,
+   "f": 48.21,
+   "o": null,
+   "m": null,
+   "n": null,
+   "u": "https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/6258/uf/br/cargo/1/vis/nominal/resultados"
+  },
   {
    "i": "Futura",
    "p": "23–24 Oct",

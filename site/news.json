@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-28T22:26:28+00:00",
+ "generated_at": "2026-10-29T05:19:22+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Coordenador de campanha do PL admite não ter prova de fraude eleitoral",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/coordenador-de-campanha-do-pl-admite-nao-ter-prova-de-fraude-eleitoral",
+   "d": "2026-10-28"
+  },
   {
    "t": "Em carta golpista, Flávio agradece Milei e Trump por apoio para fuga",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-carta-golpista-flavio-agradece-milei-e-trump-por-apoio-para-fuga",
@@ -39,11 +44,6 @@
    "t": "Flávio Bolsonaro cruza fronteira argentina e segue para o Equador",
    "u": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/flavio-bolsonaro-cruza-fronteira-argentina-e-segue-para-o-equador",
    "d": "2026-10-28"
-  },
-  {
-   "t": "Lula e eleitores idosos se emocionam em “festa de aniversário”",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-e-eleitores-idosos-se-emocionam-em-festa-de-aniversario",
-   "d": "2026-10-27"
   }
  ]
 }

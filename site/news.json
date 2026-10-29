@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-10-29T05:19:22+00:00",
+ "generated_at": "2026-10-29T19:29:09+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Fuga e carta golpista ampliam isolamento de Flávio Bolsonaro",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/fuga-e-carta-golpista-ampliam-isolamento-de-flavio-bolsonaro",
+   "d": "2026-10-29"
+  },
+  {
+   "t": "Denúncias de assédio eleitoral no trabalho disparam 75% após 2º turno",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/denuncias-de-assedio-eleitoral-no-trabalho-disparam-75-apos-2-turno",
+   "d": "2026-10-29"
+  },
   {
    "t": "Coordenador de campanha do PL admite não ter prova de fraude eleitoral",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/coordenador-de-campanha-do-pl-admite-nao-ter-prova-de-fraude-eleitoral",
@@ -33,16 +43,6 @@
   {
    "t": "STF nega ter ordenado buscas em endereços de Flávio Bolsonaro",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/stf-nega-ter-ordenado-buscas-em-enderecos-de-flavio-bolsonaro",
-   "d": "2026-10-28"
-  },
-  {
-   "t": "Avião com Flávio Bolsonaro e família segue para Miami",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/aviao-com-flavio-bolsonaro-e-familia-segue-para-miami",
-   "d": "2026-10-28"
-  },
-  {
-   "t": "Flávio Bolsonaro cruza fronteira argentina e segue para o Equador",
-   "u": "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-10/flavio-bolsonaro-cruza-fronteira-argentina-e-segue-para-o-equador",
    "d": "2026-10-28"
   }
  ]

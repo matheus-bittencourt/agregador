@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-29T23:52:28+00:00",
+ "generated_at": "2026-10-30T12:34:51+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Ato de estudantes da UFF deu pontapé em mobilização por virada de Lula",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ato-de-estudantes-da-uff-deu-pontape-em-mobilizacao-por-virada-de-lula",
+   "d": "2026-10-30"
+  },
   {
    "t": "Republicação de conteúdos após período de defeso eleitoral é concluída",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ebc-conclui-republicacao-de-conteudos-apos-periodo-de-defeso-eleitoral",
@@ -38,11 +43,6 @@
   {
    "t": "Em carta golpista, Flávio agradece Milei e Trump por apoio para fuga",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/em-carta-golpista-flavio-agradece-milei-e-trump-por-apoio-para-fuga",
-   "d": "2026-10-28"
-  },
-  {
-   "t": "Governo reforçará investigações de violência política no segundo turno",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/governo-reforcara-investigacoes-de-violencia-politica-no-segundo-turno",
    "d": "2026-10-28"
   }
  ]

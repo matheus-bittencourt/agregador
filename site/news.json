@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-10-31T17:13:50+00:00",
+ "generated_at": "2026-10-31T21:16:57+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Estudantes relatam violência relacionada à eleição presidencial",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/estudantes-relatam-violencia-relacionada-eleicao-presidencial",
+   "d": "2026-10-31"
+  },
+  {
+   "t": "Ação Popular pede suspensão de salário do senador Flávio Bolsonaro",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/acao-popular-pede-suspensao-de-salario-do-senador-flavio-bolsonaro",
+   "d": "2026-10-31"
+  },
   {
    "t": "Vieira encontra Rubio nos EUA após vitória de Lula e fuga de Flávio",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/vieira-encontra-rubio-nos-eua-apos-vitoria-de-lula-e-fuga-de-flavio",
@@ -33,16 +43,6 @@
   {
    "t": "MPT vai à Justiça e pede R$ 50 milhões da Meta por assédio eleitoral",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mpt-vai-justica-pede-rs-50-milhoes-da-meta-por-assedio-eleitoral",
-   "d": "2026-10-29"
-  },
-  {
-   "t": "Fuga e carta golpista ampliam isolamento de Flávio Bolsonaro",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/fuga-e-carta-golpista-ampliam-isolamento-de-flavio-bolsonaro",
-   "d": "2026-10-29"
-  },
-  {
-   "t": "Denúncias de assédio eleitoral no trabalho disparam 75% após 2º turno",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/denuncias-de-assedio-eleitoral-no-trabalho-disparam-75-apos-2-turno",
    "d": "2026-10-29"
   }
  ]

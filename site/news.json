@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-01T00:52:30+00:00",
+ "generated_at": "2026-11-01T21:54:45+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula garante que programas sociais serão mantidos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-garante-que-programas-sociais-serao-mantidos",
+   "d": "2026-11-01"
+  },
   {
    "t": "MTE recebe 4,3 mil denúncias de assédio eleitoral em três dias",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mte-recebe-43-mil-denuncias-de-assedio-eleitoral-em-tres-dias",
@@ -34,16 +39,6 @@
    "t": "Ato de estudantes da UFF deu pontapé em mobilização por virada de Lula",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ato-de-estudantes-da-uff-deu-pontape-em-mobilizacao-por-virada-de-lula",
    "d": "2026-10-30"
-  },
-  {
-   "t": "Republicação de conteúdos após período de defeso eleitoral é concluída",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/ebc-conclui-republicacao-de-conteudos-apos-periodo-de-defeso-eleitoral",
-   "d": "2026-10-29"
-  },
-  {
-   "t": "Campanha orienta trabalhadores sobre denúncias de assédio eleitoral",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-orienta-trabalhadores-sobre-denuncias-de-assedio-eleitoral",
-   "d": "2026-10-29"
   }
  ]
 }

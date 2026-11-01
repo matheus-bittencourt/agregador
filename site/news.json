@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-10-31T21:16:57+00:00",
+ "generated_at": "2026-11-01T00:52:30+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "MTE recebe 4,3 mil denúncias de assédio eleitoral em três dias",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mte-recebe-43-mil-denuncias-de-assedio-eleitoral-em-tres-dias",
+   "d": "2026-10-31"
+  },
   {
    "t": "Estudantes relatam violência relacionada à eleição presidencial",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/estudantes-relatam-violencia-relacionada-eleicao-presidencial",
@@ -38,11 +43,6 @@
   {
    "t": "Campanha orienta trabalhadores sobre denúncias de assédio eleitoral",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/campanha-orienta-trabalhadores-sobre-denuncias-de-assedio-eleitoral",
-   "d": "2026-10-29"
-  },
-  {
-   "t": "MPT vai à Justiça e pede R$ 50 milhões da Meta por assédio eleitoral",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mpt-vai-justica-pede-rs-50-milhoes-da-meta-por-assedio-eleitoral",
    "d": "2026-10-29"
   }
  ]

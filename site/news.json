@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-04T17:53:54+00:00",
+ "generated_at": "2026-11-04T23:29:02+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Assédio eleitoral supera 7 mil denúncias, aponta ministério",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/assedio-eleitoral-supera-7-mil-denuncias-aponta-ministerio",
+   "d": "2026-11-04"
+  },
+  {
+   "t": "Nos EUA, Flávio Bolsonaro vota remotamente a favor da PEC da Segurança",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/nos-eua-flavio-bolsonaro-vota-remotamente-favor-da-pec-da-seguranca",
+   "d": "2026-11-04"
+  },
   {
    "t": "Exames do presidente Lula estão dentro da normalidade, diz boletim",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/exames-do-presidente-lula-estao-dentro-da-normalidade-diz-boletim",
@@ -29,11 +39,6 @@
    "t": "PF apura ameaças e ataques racistas contra deputada Talíria Petrone",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-apura-ameacas-e-ataques-racistas-contra-deputada-taliria-petrone",
    "d": "2026-11-03"
-  },
-  {
-   "t": "Lula garante que programas sociais serão mantidos",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-garante-que-programas-sociais-serao-mantidos",
-   "d": "2026-11-01"
   }
  ]
 }

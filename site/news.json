@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-04T00:31:12+00:00",
+ "generated_at": "2026-11-04T17:53:54+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Exames do presidente Lula estão dentro da normalidade, diz boletim",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/exames-do-presidente-lula-estao-dentro-da-normalidade-diz-boletim",
+   "d": "2026-11-04"
+  },
+  {
+   "t": "Entenda a diferença entre o voto proporcional e o voto distrital misto",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/entenda-diferenca-entre-o-voto-proporcional-e-o-voto-distrital-misto",
+   "d": "2026-11-04"
+  },
   {
    "t": "Governabilidade de Lula exigirá negociação e acordos além da Esplanada",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/governabilidade-de-lula-exigira-negociacao-e-acordos-alem-da-esplanada",
@@ -24,11 +34,6 @@
    "t": "Lula garante que programas sociais serão mantidos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-garante-que-programas-sociais-serao-mantidos",
    "d": "2026-11-01"
-  },
-  {
-   "t": "MTE recebe 4,3 mil denúncias de assédio eleitoral em três dias",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mte-recebe-43-mil-denuncias-de-assedio-eleitoral-em-tres-dias",
-   "d": "2026-10-31"
   }
  ]
 }

@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-03T19:21:47+00:00",
+ "generated_at": "2026-11-04T00:31:12+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Governabilidade de Lula exigirá negociação e acordos além da Esplanada",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/governabilidade-de-lula-exigira-negociacao-e-acordos-alem-da-esplanada",
+   "d": "2026-11-03"
+  },
   {
    "t": "Lula vai a São Paulo para fazer exames de rotina nesta terça-feira",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-sao-paulo-para-fazer-exames-de-rotina-nesta-terca-feira",
@@ -23,21 +28,6 @@
   {
    "t": "MTE recebe 4,3 mil denúncias de assédio eleitoral em três dias",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/mte-recebe-43-mil-denuncias-de-assedio-eleitoral-em-tres-dias",
-   "d": "2026-10-31"
-  },
-  {
-   "t": "Estudantes relatam violência relacionada à eleição presidencial",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/estudantes-relatam-violencia-relacionada-eleicao-presidencial",
-   "d": "2026-10-31"
-  },
-  {
-   "t": "Ação Popular pede suspensão de salário do senador Flávio Bolsonaro",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/acao-popular-pede-suspensao-de-salario-do-senador-flavio-bolsonaro",
-   "d": "2026-10-31"
-  },
-  {
-   "t": "Vieira encontra Rubio nos EUA após vitória de Lula e fuga de Flávio",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/vieira-encontra-rubio-nos-eua-apos-vitoria-de-lula-e-fuga-de-flavio",
    "d": "2026-10-31"
   }
  ]

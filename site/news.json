@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-04T23:29:02+00:00",
+ "generated_at": "2026-11-05T23:29:55+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula quer economia arrumada para atrair investimentos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-economia-arrumada-para-atrair-investimentos",
+   "d": "2026-11-05"
+  },
   {
    "t": "Assédio eleitoral supera 7 mil denúncias, aponta ministério",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/assedio-eleitoral-supera-7-mil-denuncias-aponta-ministerio",
@@ -33,11 +38,6 @@
   {
    "t": "Lula vai a São Paulo para fazer exames de rotina nesta terça-feira",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-sao-paulo-para-fazer-exames-de-rotina-nesta-terca-feira",
-   "d": "2026-11-03"
-  },
-  {
-   "t": "PF apura ameaças e ataques racistas contra deputada Talíria Petrone",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-apura-ameacas-e-ataques-racistas-contra-deputada-taliria-petrone",
    "d": "2026-11-03"
   }
  ]

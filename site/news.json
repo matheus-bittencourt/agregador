@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-06T06:00:32+00:00",
+ "generated_at": "2026-11-06T21:25:09+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Sem posição do Senado, regras sobre Flávio seguem indefinidas",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/sem-posicao-do-senado-regras-sobre-flavio-seguem-indefinidas",
+   "d": "2026-11-06"
+  },
+  {
+   "t": "Lula quer levar Brasil à condição de país desenvolvido em quatro anos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-levar-brasil-condicao-de-pais-desenvolvido-em-quatro-anos",
+   "d": "2026-11-06"
+  },
   {
    "t": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
@@ -34,11 +44,6 @@
    "t": "Entenda a diferença entre o voto proporcional e o voto distrital misto",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/entenda-diferenca-entre-o-voto-proporcional-e-o-voto-distrital-misto",
    "d": "2026-11-04"
-  },
-  {
-   "t": "Governabilidade de Lula exigirá negociação e acordos além da Esplanada",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/governabilidade-de-lula-exigira-negociacao-e-acordos-alem-da-esplanada",
-   "d": "2026-11-03"
   }
  ]
 }

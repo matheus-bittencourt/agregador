@@ -1,12 +1,17 @@
 {
- "generated_at": "2026-11-05T23:29:55+00:00",
+ "generated_at": "2026-11-06T06:00:32+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
   {
-   "t": "Lula quer economia arrumada para atrair investimentos",
+   "t": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
+   "d": "2026-11-05"
+  },
+  {
+   "t": "Lula quer “economia arrumada” para atrair investimentos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-economia-arrumada-para-atrair-investimentos",
    "d": "2026-11-05"
   },
@@ -33,11 +38,6 @@
   {
    "t": "Governabilidade de Lula exigirá negociação e acordos além da Esplanada",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/governabilidade-de-lula-exigira-negociacao-e-acordos-alem-da-esplanada",
-   "d": "2026-11-03"
-  },
-  {
-   "t": "Lula vai a São Paulo para fazer exames de rotina nesta terça-feira",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-sao-paulo-para-fazer-exames-de-rotina-nesta-terca-feira",
    "d": "2026-11-03"
   }
  ]

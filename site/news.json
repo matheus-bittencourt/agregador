@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-06T21:25:09+00:00",
+ "generated_at": "2026-11-07T01:45:17+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula sanciona exame que irá avaliar qualidade de alunos de medicina",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-sanciona-exame-que-ira-avaliar-qualidade-de-alunos-de-medicina",
+   "d": "2026-11-06"
+  },
   {
    "t": "Sem posição do Senado, regras sobre Flávio seguem indefinidas",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/sem-posicao-do-senado-regras-sobre-flavio-seguem-indefinidas",
@@ -38,11 +43,6 @@
   {
    "t": "Exames do presidente Lula estão dentro da normalidade, diz boletim",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/exames-do-presidente-lula-estao-dentro-da-normalidade-diz-boletim",
-   "d": "2026-11-04"
-  },
-  {
-   "t": "Entenda a diferença entre o voto proporcional e o voto distrital misto",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/entenda-diferenca-entre-o-voto-proporcional-e-o-voto-distrital-misto",
    "d": "2026-11-04"
   }
  ]

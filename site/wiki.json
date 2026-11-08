@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T01:45:18+00:00",
+ "generated_at": "2026-11-08T01:14:04+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -556,28 +556,6 @@
    "m": 2.2,
    "n": 2000,
    "u": "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-518-dos-votos-validos-no-2o-turno-lula-482/"
-  },
-  {
-   "i": "Ipespe",
-   "p": "6–8 Oct",
-   "d": "2026-10-08",
-   "l": 44.0,
-   "f": 49.0,
-   "o": 7.0,
-   "m": 2.6,
-   "n": 1500,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/ipespe-flavio-tem-527-dos-votos-validos-no-2o-turno-lula-473/"
-  },
-  {
-   "i": "AtlasIntel",
-   "p": "3–8 Oct",
-   "d": "2026-10-08",
-   "l": 45.7,
-   "f": 51.1,
-   "o": 3.2,
-   "m": 1.0,
-   "n": 5026,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/atlas-flavio-tem-528-dos-votos-validos-no-2o-turno-lula-472/"
   }
  ]
 }

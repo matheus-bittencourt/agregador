@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-09T01:34:24+00:00",
+ "generated_at": "2026-11-09T20:35:57+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "CLDF vota proposta que libera reeleição de membros da Mesa Diretora",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-vota-proposta-que-libera-reeleicao-de-membros-da-mesa-diretora",
+   "d": "2026-11-09"
+  },
+  {
+   "t": "Relator apresenta diretrizes da proposta de voto distrital misto",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/relator-do-distrital-misto-propoe-voto-unico-para-distrital-e-lista",
+   "d": "2026-11-09"
+  },
   {
    "t": "Lula se compromete com responsabilidade fiscal e busca conciliação",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-busca-conciliacao-e-se-compromete-com-responsabilidade-fiscal",
@@ -34,16 +44,6 @@
    "t": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
    "d": "2026-11-05"
-  },
-  {
-   "t": "Lula quer “economia arrumada” para atrair investimentos",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-economia-arrumada-para-atrair-investimentos",
-   "d": "2026-11-05"
-  },
-  {
-   "t": "Assédio eleitoral supera 7 mil denúncias, aponta ministério",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/assedio-eleitoral-supera-7-mil-denuncias-aponta-ministerio",
-   "d": "2026-11-04"
   }
  ]
 }

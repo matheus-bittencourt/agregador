@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-07T01:45:17+00:00",
+ "generated_at": "2026-11-09T01:34:24+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula se compromete com responsabilidade fiscal e busca conciliação",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-busca-conciliacao-e-se-compromete-com-responsabilidade-fiscal",
+   "d": "2026-11-08"
+  },
+  {
+   "t": "PF investiga ameaças recebidas pela deputada eleita Ana Elisa",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-investiga-ameacas-recebidas-pela-deputada-eleita-ana-elisa",
+   "d": "2026-11-08"
+  },
   {
    "t": "Lula sanciona exame que irá avaliar qualidade de alunos de medicina",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-sanciona-exame-que-ira-avaliar-qualidade-de-alunos-de-medicina",
@@ -33,16 +43,6 @@
   {
    "t": "Assédio eleitoral supera 7 mil denúncias, aponta ministério",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/assedio-eleitoral-supera-7-mil-denuncias-aponta-ministerio",
-   "d": "2026-11-04"
-  },
-  {
-   "t": "Nos EUA, Flávio Bolsonaro vota remotamente a favor da PEC da Segurança",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/nos-eua-flavio-bolsonaro-vota-remotamente-favor-da-pec-da-seguranca",
-   "d": "2026-11-04"
-  },
-  {
-   "t": "Exames do presidente Lula estão dentro da normalidade, diz boletim",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/exames-do-presidente-lula-estao-dentro-da-normalidade-diz-boletim",
    "d": "2026-11-04"
   }
  ]

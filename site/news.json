@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-09T20:35:57+00:00",
+ "generated_at": "2026-11-11T01:48:03+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula e presidente da Turquia se reúnem e falam de comércio bilateral",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-presidente-da-turquia-se-reunem-e-falam-de-comercio-bilateral",
+   "d": "2026-11-10"
+  },
   {
    "t": "CLDF vota proposta que libera reeleição de membros da Mesa Diretora",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-vota-proposta-que-libera-reeleicao-de-membros-da-mesa-diretora",
@@ -39,11 +44,6 @@
    "t": "Lula quer levar Brasil à condição de país desenvolvido em quatro anos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-levar-brasil-condicao-de-pais-desenvolvido-em-quatro-anos",
    "d": "2026-11-06"
-  },
-  {
-   "t": "Lula vai criar Ministério da Segurança Pública com Medida Provisória",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-vai-criar-ministerio-da-seguranca-publica-com-medida-provisoria",
-   "d": "2026-11-05"
   }
  ]
 }

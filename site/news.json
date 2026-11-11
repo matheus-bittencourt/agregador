@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-11T01:48:03+00:00",
+ "generated_at": "2026-11-11T17:49:15+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "CLDF aprova reeleição de membros da Mesa Diretora",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-aprova-reeleicao-de-membros-da-mesa-diretora",
+   "d": "2026-11-11"
+  },
+  {
+   "t": "Lula: planeta não pode esperar em meio a guerras e conflitos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-planeta-nao-pode-esperar-em-meio-guerras-e-conflitos",
+   "d": "2026-11-11"
+  },
   {
    "t": "Lula e presidente da Turquia se reúnem e falam de comércio bilateral",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-presidente-da-turquia-se-reunem-e-falam-de-comercio-bilateral",
@@ -24,26 +34,6 @@
    "t": "Lula se compromete com responsabilidade fiscal e busca conciliação",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-busca-conciliacao-e-se-compromete-com-responsabilidade-fiscal",
    "d": "2026-11-08"
-  },
-  {
-   "t": "PF investiga ameaças recebidas pela deputada eleita Ana Elisa",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/pf-investiga-ameacas-recebidas-pela-deputada-eleita-ana-elisa",
-   "d": "2026-11-08"
-  },
-  {
-   "t": "Lula sanciona exame que irá avaliar qualidade de alunos de medicina",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-sanciona-exame-que-ira-avaliar-qualidade-de-alunos-de-medicina",
-   "d": "2026-11-06"
-  },
-  {
-   "t": "Sem posição do Senado, regras sobre Flávio seguem indefinidas",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/sem-posicao-do-senado-regras-sobre-flavio-seguem-indefinidas",
-   "d": "2026-11-06"
-  },
-  {
-   "t": "Lula quer levar Brasil à condição de país desenvolvido em quatro anos",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-levar-brasil-condicao-de-pais-desenvolvido-em-quatro-anos",
-   "d": "2026-11-06"
   }
  ]
 }

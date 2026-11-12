@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-12T00:23:19+00:00",
+ "generated_at": "2026-11-12T18:02:40+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula cobra pedido de desculpas da imprensa sobre triplex em Guarujá",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-cobra-pedido-de-desculpas-da-imprensa-sobre-triplex-em-guaruja",
+   "d": "2026-11-12"
+  },
+  {
+   "t": "Senado deve votar ajuste fiscal com previsão de economia de R$ 60 bi",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/senado-deve-votar-ajuste-fiscal-com-previsao-de-economia-de-r-60-bi",
+   "d": "2026-11-12"
+  },
   {
    "t": "CLDF aprova reeleição de membros da Mesa Diretora",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-aprova-reeleicao-de-membros-da-mesa-diretora",
@@ -14,16 +24,6 @@
    "t": "Lula: planeta não pode esperar em meio a guerras e conflitos",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-planeta-nao-pode-esperar-em-meio-guerras-e-conflitos",
    "d": "2026-11-11"
-  },
-  {
-   "t": "Lula e presidente da Turquia se reúnem e falam de comércio bilateral",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-presidente-da-turquia-se-reunem-e-falam-de-comercio-bilateral",
-   "d": "2026-11-10"
-  },
-  {
-   "t": "CLDF vota proposta que libera reeleição de membros da Mesa Diretora",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-vota-proposta-que-libera-reeleicao-de-membros-da-mesa-diretora",
-   "d": "2026-11-09"
   }
  ]
 }

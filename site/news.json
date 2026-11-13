@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-12T18:02:40+00:00",
+ "generated_at": "2026-11-13T00:58:37+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula: nenhum país tem mais autoridade para falar de clima que Brasil",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-nenhum-pais-tem-mais-autoridade-para-tratar-de-clima-que-brasil",
+   "d": "2026-11-12"
+  },
   {
    "t": "Lula cobra pedido de desculpas da imprensa sobre triplex em Guarujá",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-cobra-pedido-de-desculpas-da-imprensa-sobre-triplex-em-guaruja",
@@ -14,16 +19,6 @@
    "t": "Senado deve votar ajuste fiscal com previsão de economia de R$ 60 bi",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/senado-deve-votar-ajuste-fiscal-com-previsao-de-economia-de-r-60-bi",
    "d": "2026-11-12"
-  },
-  {
-   "t": "CLDF aprova reeleição de membros da Mesa Diretora",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/cldf-aprova-reeleicao-de-membros-da-mesa-diretora",
-   "d": "2026-11-11"
-  },
-  {
-   "t": "Lula: planeta não pode esperar em meio a guerras e conflitos",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-planeta-nao-pode-esperar-em-meio-guerras-e-conflitos",
-   "d": "2026-11-11"
   }
  ]
 }

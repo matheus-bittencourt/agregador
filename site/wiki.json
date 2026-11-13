@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-12T00:23:20+00:00",
+ "generated_at": "2026-11-13T00:58:39+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1383403837"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1385290728"
  },
  "itens": [
   {
@@ -490,28 +490,6 @@
    "m": 2.2,
    "n": 2000,
    "u": "https://viva.com.br/politica/indexabroadcast-no-2-turno-flavio-bolsonaro-tem-44-ante-42-de-lula.html"
-  },
-  {
-   "i": "Palver",
-   "p": "10–13 Oct",
-   "d": "2026-10-13",
-   "l": 49.0,
-   "f": 50.0,
-   "o": 1.0,
-   "m": 2.3,
-   "n": 5000,
-   "u": "https://viva.com.br/politica/palver-flavio-bolsonaro-tem-50-e-lula-49-em-empate-tecnico-no-2-turno.html"
-  },
-  {
-   "i": "Quaest",
-   "p": "10–13 Oct",
-   "d": "2026-10-13",
-   "l": 44.0,
-   "f": 46.0,
-   "o": 10.0,
-   "m": 2.0,
-   "n": 2154,
-   "u": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-presidente-14-outubro.ghtml"
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-14T05:52:29+00:00",
+ "generated_at": "2026-11-15T05:52:59+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -424,61 +424,6 @@
    "m": 1.0,
    "n": 15554,
    "u": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-511-dos-votos-validos-no-2o-turno-lula-489/?utm_source=whatsapp&utm_medium=-link"
-  },
-  {
-   "i": "Futura",
-   "p": "14–15 Oct",
-   "d": "2026-10-15",
-   "l": 47.5,
-   "f": 49.0,
-   "o": 3.6,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-508-dos-votos-validos-no-2o-turno-lula-492/"
-  },
-  {
-   "i": "Ipespe",
-   "p": "13–15 Oct",
-   "d": "2026-10-15",
-   "l": 46.0,
-   "f": 48.0,
-   "o": 6.0,
-   "m": 2.6,
-   "n": 1500,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/ipespe-abrapel-flavio-tem-512-dos-votos-validos-no-2o-turno-lula-488/?utm_source=whatsapp&utm_medium=-link"
-  },
-  {
-   "i": "MDA",
-   "p": "13–15 Oct",
-   "d": "2026-10-15",
-   "l": 45.9,
-   "f": 46.8,
-   "o": 7.3,
-   "m": 2.2,
-   "n": 2014,
-   "u": "https://noticias.uol.com.br/eleicoes/2026/10/16/cntmda-pesquisa-presidencial-2-turno.ghtm"
-  },
-  {
-   "i": "PoderData",
-   "p": "13–15 Oct",
-   "d": "2026-10-15",
-   "l": 47.0,
-   "f": 47.0,
-   "o": 6.0,
-   "m": 1.8,
-   "n": 3000,
-   "u": "https://noticias.uol.com.br/eleicoes/2026/10/16/poderdata-lula-flavio-bolsonaro-presidencia-republica-segundo-turno.ghtm"
-  },
-  {
-   "i": "Datafolha",
-   "p": "13–15 Oct",
-   "d": "2026-10-15",
-   "l": 45.0,
-   "f": 47.0,
-   "o": 8.0,
-   "m": 2.0,
-   "n": 2520,
-   "u": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml?utm_source=twitter&utm_medium=social&utm_campaign=g1"
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T05:52:59+00:00",
+ "generated_at": "2026-11-16T05:52:59+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -402,28 +402,6 @@
    "m": 2.15,
    "n": 2100,
    "u": "https://www.metropoles.com/brasil/vox-brasil-com-empate-tecnico-lula-tem-464-e-flavio-bolsonaro-446"
-  },
-  {
-   "i": "Gerp",
-   "p": "14–16 Oct",
-   "d": "2026-10-16",
-   "l": 45.0,
-   "f": 50.0,
-   "o": 5.0,
-   "m": 2.0,
-   "n": 2400,
-   "u": "https://tmc.com.br/politica/pesquisa-gerp-flavio-bolsonaro-lidera-com-50-contra-45-de-lula/"
-  },
-  {
-   "i": "Verita",
-   "p": "12–16 Oct",
-   "d": "2026-10-16",
-   "l": 47.7,
-   "f": 49.7,
-   "o": 2.6,
-   "m": 1.0,
-   "n": 15554,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-511-dos-votos-validos-no-2o-turno-lula-489/?utm_source=whatsapp&utm_medium=-link"
   }
  ]
 }

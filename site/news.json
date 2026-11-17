@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-13T17:36:45+00:00",
+ "generated_at": "2026-11-17T00:06:40+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula e Sánchez defendem união contra o avanço da extrema-direita",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-sanchez-defendem-uniao-contra-avanco-da-extrema-direita",
+   "d": "2026-11-16"
+  },
   {
    "t": "Lula chega às Filipinas; Brasil quer ser Parceiro de Diálogo da Asean",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-chega-filipinas-brasil-quer-ser-parceiro-de-dialogo-da-asean",
@@ -18,11 +23,6 @@
   {
    "t": "Lula cobra pedido de desculpas da imprensa sobre triplex em Guarujá",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-cobra-pedido-de-desculpas-da-imprensa-sobre-triplex-em-guaruja",
-   "d": "2026-11-12"
-  },
-  {
-   "t": "Senado deve votar ajuste fiscal com previsão de economia de R$ 60 bi",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/senado-deve-votar-ajuste-fiscal-com-previsao-de-economia-de-r-60-bi",
    "d": "2026-11-12"
   }
  ]

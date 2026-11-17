@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-16T05:52:59+00:00",
+ "generated_at": "2026-11-17T00:06:41+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1385290728"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386058436"
  },
  "itens": [
   {
@@ -369,39 +369,6 @@
    "m": 1.0,
    "n": 4998,
    "u": "https://www.cnnbrasil.com.br/eleicoes/atlas-flavio-tem-511-dos-votos-validos-no-2o-turno-lula-489/"
-  },
-  {
-   "i": "Futura",
-   "p": "16–17 Oct",
-   "d": "2026-10-17",
-   "l": 47.5,
-   "f": 48.3,
-   "o": 4.3,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://exame.com/brasil/pesquisa-futura-para-presidente-flavio-bolsonaro-tem-504-e-lula-496-no-2o-turno/"
-  },
-  {
-   "i": "DataTrends",
-   "p": "15–17 Oct",
-   "d": "2026-10-17",
-   "l": 46.0,
-   "f": 49.0,
-   "o": 5.0,
-   "m": 2.19,
-   "n": 2000,
-   "u": "https://robsonpiresxerife.com/pesquisa-datatrends-flavio-bolsonaro-tem-515-dos-votos-validos-contra-485-de-lula/"
-  },
-  {
-   "i": "Vox Brasil",
-   "p": "15–17 Oct",
-   "d": "2026-10-17",
-   "l": 46.4,
-   "f": 44.6,
-   "o": 8.9,
-   "m": 2.15,
-   "n": 2100,
-   "u": "https://www.metropoles.com/brasil/vox-brasil-com-empate-tecnico-lula-tem-464-e-flavio-bolsonaro-446"
   }
  ]
 }

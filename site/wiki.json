@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T00:06:41+00:00",
+ "generated_at": "2026-11-18T03:31:23+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -336,39 +336,6 @@
    "m": 2.0,
    "n": 2000,
    "u": "https://www.riotimesonline.com/real-time-big-data-poll-flavio-52-lula-48-runoff-2026/"
-  },
-  {
-   "i": "PoderData",
-   "p": "16–18 Oct",
-   "d": "2026-10-18",
-   "l": 46.0,
-   "f": 49.0,
-   "o": 5.0,
-   "m": 1.8,
-   "n": 3000,
-   "u": "https://www.poder360.com.br/poderdata/pesquisa-poderdata-aya-leia-os-resultados-de-lula-e-flavio-no-2o-turno-19out2026/?utm_source=chatgpt.com"
-  },
-  {
-   "i": "Nexus",
-   "p": "16–18 Oct",
-   "d": "2026-10-18",
-   "l": 45.9,
-   "f": 46.5,
-   "o": 7.6,
-   "m": 2.0,
-   "n": 2002,
-   "u": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-19-de-outubro-de-2026/?utm_source=chatgpt.com"
-  },
-  {
-   "i": "AtlasIntel",
-   "p": "13–18 Oct",
-   "d": "2026-10-18",
-   "l": 47.6,
-   "f": 49.8,
-   "o": 2.6,
-   "m": 1.0,
-   "n": 4998,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/atlas-flavio-tem-511-dos-votos-validos-no-2o-turno-lula-489/"
   }
  ]
 }

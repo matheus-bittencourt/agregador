@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-18T03:31:23+00:00",
+ "generated_at": "2026-11-19T03:04:22+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386058436"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386478768"
  },
  "itens": [
   {
@@ -292,50 +292,6 @@
    "m": 2.0,
    "n": 2154,
    "u": "https://oglobo.globo.com/blogs/pulso/post/2026/10/pesquisa-quaest-flavio-tem-45percent-e-lula-marca-44percent-distancia-diminui-a-quatro-dias-da-eleicao.ghtml"
-  },
-  {
-   "i": "Verita",
-   "p": "15–19 Oct",
-   "d": "2026-10-19",
-   "l": 48.2,
-   "f": 49.7,
-   "o": 2.1,
-   "m": 1.0,
-   "n": 15554,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-507-dos-votos-validos-no-2o-turno-lula-493/"
-  },
-  {
-   "i": "Ideia",
-   "p": "15–19 Oct",
-   "d": "2026-10-19",
-   "l": 46.0,
-   "f": 48.0,
-   "o": 6.0,
-   "m": 2.5,
-   "n": 1500,
-   "u": "https://www.canalmeio.com.br/wp-content/uploads/2026/10/Pesquisa-Meio_Ideia-Outubro.pdf"
-  },
-  {
-   "i": "Alfa",
-   "p": "15–19 Oct",
-   "d": "2026-10-19",
-   "l": 45.9,
-   "f": 48.8,
-   "o": 5.3,
-   "m": 1.9,
-   "n": 2700,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/alfa-flavio-tem-515-dos-votos-validos-no-2o-turno-lula-485/?utm_source=chatgpt.com"
-  },
-  {
-   "i": "Real Time",
-   "p": "15–19 Oct",
-   "d": "2026-10-19",
-   "l": 45.0,
-   "f": 48.0,
-   "o": 7.0,
-   "m": 2.0,
-   "n": 2000,
-   "u": "https://www.riotimesonline.com/real-time-big-data-poll-flavio-52-lula-48-runoff-2026/"
   }
  ]
 }

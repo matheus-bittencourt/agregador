@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-19T03:04:22+00:00",
+ "generated_at": "2026-11-20T06:46:11+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386478768"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386638694"
  },
  "itens": [
   {
@@ -259,39 +259,6 @@
    "m": 2.0,
    "n": 2400,
    "u": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-53-dos-votos-validos-no-2o-turno-lula-47-2/"
-  },
-  {
-   "i": "Futura",
-   "p": "19–20 Oct",
-   "d": "2026-10-20",
-   "l": 46.8,
-   "f": 48.9,
-   "o": 4.3,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://www.cartacapital.com.br/politica/flavio-e-lula-seguem-tecnicamente-empatados-mostra-pesquisa-futura/"
-  },
-  {
-   "i": "Palver",
-   "p": "18–20 Oct",
-   "d": "2026-10-20",
-   "l": 48.0,
-   "f": 50.0,
-   "o": 1.0,
-   "m": 2.4,
-   "n": 5000,
-   "u": "https://www.terra.com.br/noticias/eleicoes/pesquisas/pesquisa-palver-flavio-bolsonaro-tem-50-e-lula-48-no-2-turno-candidatos-estao-em-empate-tecnico,6e99d76af4651a537219166fa78a4183lmte1cxs.html"
-  },
-  {
-   "i": "Quaest",
-   "p": "17–20 Oct",
-   "d": "2026-10-20",
-   "l": 44.0,
-   "f": 45.0,
-   "o": 11.0,
-   "m": 2.0,
-   "n": 2154,
-   "u": "https://oglobo.globo.com/blogs/pulso/post/2026/10/pesquisa-quaest-flavio-tem-45percent-e-lula-marca-44percent-distancia-diminui-a-quatro-dias-da-eleicao.ghtml"
   }
  ]
 }

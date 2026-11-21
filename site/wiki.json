@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-20T06:46:11+00:00",
+ "generated_at": "2026-11-21T06:39:35+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -215,50 +215,6 @@
    "m": 1.0,
    "n": 15554,
    "u": "https://exame.com/brasil/pesquisa-verita-flavio-bolsonaro-tem-513-e-lula-487-dos-votos-validos/"
-  },
-  {
-   "i": "Indexa",
-   "p": "20–21 Oct",
-   "d": "2026-10-21",
-   "l": 44.1,
-   "f": 45.2,
-   "o": 10.7,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/indexa-broadcast-flavio-tem-506-dos-votos-validos-lula-494/"
-  },
-  {
-   "i": "Datatrends",
-   "p": "19–21 Oct",
-   "d": "2026-10-21",
-   "l": 46.0,
-   "f": 50.0,
-   "o": 4.0,
-   "m": 2.19,
-   "n": 2000,
-   "u": "https://www.riotimesonline.com/datatrends-poll-flavio-51-9-lula-48-1-runoff-2026/"
-  },
-  {
-   "i": "PoderData",
-   "p": "19–21 Oct",
-   "d": "2026-10-21",
-   "l": 48.0,
-   "f": 49.0,
-   "o": 4.0,
-   "m": 1.6,
-   "n": 4000,
-   "u": "https://www.poder360.com.br/poderdata/flavio-tem-51-e-lula-tem-49-dos-votos-validos-diz-poderdata-aya/"
-  },
-  {
-   "i": "Gerp",
-   "p": "19–21 Oct",
-   "d": "2026-10-21",
-   "l": 45.0,
-   "f": 50.0,
-   "o": 5.0,
-   "m": 2.0,
-   "n": 2400,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-53-dos-votos-validos-no-2o-turno-lula-47-2/"
   }
  ]
 }

@@ -1,10 +1,20 @@
 {
- "generated_at": "2026-11-21T16:00:42+00:00",
+ "generated_at": "2026-11-21T22:58:00+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Ex-presidente Jair Bolsonaro está internado em UTI no Distrito Federal",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
+   "d": "2026-11-21"
+  },
+  {
+   "t": "\"O sistema financeiro não vai me ensinar a dirigir o Brasil\", diz Lula",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/o-sistema-financeiro-nao-vai-me-ensinar-dirigir-o-brasil-diz-lula",
+   "d": "2026-11-21"
+  },
   {
    "t": "Lula presta solidariedade à cidade gaúcha devastada por tempestade",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-presta-solidariedade-cidade-gaucha-devastada-por-tempestade",
@@ -24,11 +34,6 @@
    "t": "Lula promete manter direitos e diz que controle fiscal é prioridade",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-promete-manter-direitos-e-diz-que-controle-fiscal-e-prioridade",
    "d": "2026-11-19"
-  },
-  {
-   "t": "Senado adia votação de destaques do projeto de ajuste fiscal",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/senado-adia-votacao-de-destaques-do-projeto-de-ajuste-fiscal",
-   "d": "2026-11-17"
   }
  ]
 }

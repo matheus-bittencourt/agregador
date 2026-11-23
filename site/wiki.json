@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-22T06:08:08+00:00",
+ "generated_at": "2026-11-23T06:59:57+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
@@ -94,61 +94,6 @@
    "m": 2.0,
    "n": 2400,
    "u": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-52-dos-votos-validos-no-2o-turno-lula-48-2/"
-  },
-  {
-   "i": "Colectta",
-   "p": "23 Oct",
-   "d": "2026-10-23",
-   "l": 46.5,
-   "f": 46.0,
-   "o": 7.5,
-   "m": 2.0,
-   "n": 3000,
-   "u": "https://brazileconomy.com.br/eleicoes-2026/2026/10/lula-tem-503-dos-votos-validos-e-flavio-497-aponta-pesquisa-brazil-economycolectta/"
-  },
-  {
-   "i": "MDA",
-   "p": "21–23 Oct",
-   "d": "2026-10-23",
-   "l": 45.0,
-   "f": 46.3,
-   "o": 8.7,
-   "m": 2.2,
-   "n": 2032,
-   "u": "https://www.reuters.com/world/americas/flavio-bolsonaro-lula-about-even-ahead-brazil-election-runoff-cntmda-poll-shows-2026-10-24/"
-  },
-  {
-   "i": "Instituto França",
-   "p": "21–23 Oct",
-   "d": "2026-10-23",
-   "l": 43.1,
-   "f": 45.1,
-   "o": 11.3,
-   "m": 2.5,
-   "n": 1537,
-   "u": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-514-contra-486-de-lula-em-votos-validos-diz-pesquisa/?utm_source=chatgpt.com"
-  },
-  {
-   "i": "Verita",
-   "p": "19–23 Oct",
-   "d": "2026-10-23",
-   "l": 47.8,
-   "f": 49.8,
-   "o": 2.4,
-   "m": 1.0,
-   "n": 15554,
-   "u": "https://ricardoantunes.net/instituto-verita-flavio-abre-mais-de-3-pontos-sobre-lula-51-6-x-484/?utm_source=chatgpt.com"
-  },
-  {
-   "i": "AtlasIntel",
-   "p": "18–23 Oct",
-   "d": "2026-10-23",
-   "l": 48.4,
-   "f": 49.9,
-   "o": 1.7,
-   "m": 1.0,
-   "n": 4990,
-   "u": "https://atlasintel.org/poll/brazil-national-pesquisa-atlasbloomberg-2026-10-24"
   }
  ]
 }

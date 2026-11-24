@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-23T06:59:57+00:00",
+ "generated_at": "2026-11-24T05:50:09+00:00",
  "fonte": {
   "nome": "Wikipédia (en), Opinion polling for the 2026 Brazilian presidential election",
   "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
   "licenca": "CC BY-SA 4.0",
-  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1386638694"
+  "revisao": "https://en.wikipedia.org/w/index.php?oldid=1387294317"
  },
  "itens": [
   {
@@ -17,83 +17,6 @@
    "m": null,
    "n": null,
    "u": "https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/6258/uf/br/cargo/1/vis/nominal/resultados"
-  },
-  {
-   "i": "Futura",
-   "p": "23–24 Oct",
-   "d": "2026-10-24",
-   "l": 47.9,
-   "f": 48.2,
-   "o": 3.9,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://exame.com/brasil/pesquisa-futura-flavio-bolsonaro-tem-501-e-lula-499-no-2o-turno/"
-  },
-  {
-   "i": "Quaest",
-   "p": "23–24 Oct",
-   "d": "2026-10-24",
-   "l": 45.0,
-   "f": 46.0,
-   "o": 9.0,
-   "m": 2.0,
-   "n": 3702,
-   "u": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml"
-  },
-  {
-   "i": "Datafolha",
-   "p": "23–24 Oct",
-   "d": "2026-10-24",
-   "l": 47.0,
-   "f": 48.0,
-   "o": 5.0,
-   "m": 2.0,
-   "n": 4050,
-   "u": "https://www1.folha.uol.com.br/poder/2026/10/datafolha-flavio-bolsonaro-tem-51-dos-votos-validos-e-lula-49-em-empate-tecnico.shtml"
-  },
-  {
-   "i": "Nexus",
-   "p": "23–24 Oct",
-   "d": "2026-10-24",
-   "l": 46.0,
-   "f": 47.0,
-   "o": 7.0,
-   "m": 2.2,
-   "n": 2000,
-   "u": "https://veja.abril.com.br/politica/a-nova-pesquisa-btg-nexus-sobre-a-disputa-flavio-x-lula-a-ultima-antes-do-segundo-turno/"
-  },
-  {
-   "i": "PoderData",
-   "p": "23–24 Oct",
-   "d": "2026-10-24",
-   "l": 48.0,
-   "f": 49.0,
-   "o": 4.0,
-   "m": 1.6,
-   "n": 4000,
-   "u": "https://www.poder360.com.br/poderdata/flavio-tem-51-e-lula-tem-49-dos-votos-validos-diz-poderdata-aya-2/"
-  },
-  {
-   "i": "Palver",
-   "p": "22–24 Oct",
-   "d": "2026-10-24",
-   "l": 49.0,
-   "f": 50.0,
-   "o": 1.0,
-   "m": 2.2,
-   "n": 5000,
-   "u": "https://exame.com/brasil/pesquisa-para-presidente-palver-flavio-bolsonaro-tem-50-e-lula-49-no-2o-turno/"
-  },
-  {
-   "i": "Gerp",
-   "p": "22–24 Oct",
-   "d": "2026-10-24",
-   "l": 46.0,
-   "f": 49.0,
-   "o": 4.0,
-   "m": 2.0,
-   "n": 2400,
-   "u": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-52-dos-votos-validos-no-2o-turno-lula-48-2/"
   }
  ]
 }

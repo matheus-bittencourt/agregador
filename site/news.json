@@ -1,10 +1,15 @@
 {
- "generated_at": "2026-11-25T14:04:40+00:00",
+ "generated_at": "2026-11-26T21:16:40+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "Lula e Cleitinho debatem negociação de dívida de Minas Gerais",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-cleitinho-debatem-negociacao-de-divida-de-minas-gerais",
+   "d": "2026-11-26"
+  },
   {
    "t": "Projeto de regulação das big techs será votado na próxima semana",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana",
@@ -19,11 +24,6 @@
    "t": "Lula lamenta falta de acordo na COP31 e pede união pelo meio ambiente",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-lamenta-falta-de-acordo-na-cop-31-e-pede-uniao-pelo-meio-ambiente",
    "d": "2026-11-24"
-  },
-  {
-   "t": "Câmara aprova urgência para votação do projeto de ajuste fiscal",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-urgencia-para-votacao-do-projeto-de-ajuste-fiscal",
-   "d": "2026-11-23"
   }
  ]
 }

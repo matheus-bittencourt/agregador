@@ -1,10 +1,25 @@
 {
- "generated_at": "2026-11-26T21:16:40+00:00",
+ "generated_at": "2026-11-28T01:17:52+00:00",
  "fonte": {
   "nome": "Agência Brasil (EBC)",
   "url": "https://agenciabrasil.ebc.com.br/politica"
  },
  "itens": [
+  {
+   "t": "STF: Dino suspende emendas parlamentares de Flávio Bolsonaro",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/stf-dino-suspende-emendas-parlamentares-de-flavio-bolsonaro",
+   "d": "2026-11-27"
+  },
+  {
+   "t": "Lula quer espaço de lazer e atenção para idosos",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-quer-espaco-de-lazer-e-atencao-para-idosos",
+   "d": "2026-11-27"
+  },
+  {
+   "t": "Lula garante benefícios em novo governo, mas defende revisão",
+   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-garante-beneficios-em-novo-governo-mas-defende-revisao",
+   "d": "2026-11-27"
+  },
   {
    "t": "Lula e Cleitinho debatem negociação de dívida de Minas Gerais",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-cleitinho-debatem-negociacao-de-divida-de-minas-gerais",
@@ -18,11 +33,6 @@
   {
    "t": "Lula sanciona ajuste fiscal aprovado no Congresso",
    "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-sanciona-ajuste-fiscal-aprovado-no-congresso",
-   "d": "2026-11-24"
-  },
-  {
-   "t": "Lula lamenta falta de acordo na COP31 e pede união pelo meio ambiente",
-   "u": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-lamenta-falta-de-acordo-na-cop-31-e-pede-uniao-pelo-meio-ambiente",
    "d": "2026-11-24"
   }
  ]
